@@ -4,14 +4,14 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @SuppressWarnings("serial")
-@Entity // Ne treba da bude @Entity
+@MappedSuperclass // @Entity NECE
 public class Korisnik implements Serializable { // Apstraktna?
 
 	// protected enum Uloge{Gledalac, Menadzer, Administrator}; // 0, 1 i 2
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY) // Ili AUTO?
-	protected Long idKorisnik; // Protected jer se nasledjuje
+//	@Id
+//	@GeneratedValue(strategy = GenerationType.IDENTITY) // Ili AUTO?
+//	protected Long idKorisnik; // Protected jer se nasledjuje
 	
 	@Column
 	protected String username;

@@ -27,6 +27,11 @@ public class Projekcija implements Serializable{
 	@ManyToMany
 	private Set<Bioskop> listaBioskopovaUKojimaSePrikazuje = new HashSet<>(); 
 	// Posto je manytomany mora oba da budu set
+	// Ovo je vezano sa ROF u Bioskop-u (tabela BIOSKOP_RASPORED_ODRZAVANJA_FILMOVA)
+	
+	// Ovo je bilo u Film
+	@ManyToMany(mappedBy = "terminskaListaProjekcija")
+	private Set<Sala> listaSala = new HashSet<>();
 	
 	@ManyToOne
 	private Gledalac rezervator;

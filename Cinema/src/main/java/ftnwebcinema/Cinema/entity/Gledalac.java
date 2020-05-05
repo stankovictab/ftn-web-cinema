@@ -7,11 +7,15 @@ import java.util.*;
 @Entity
 public class Gledalac extends Korisnik {
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY) // Ili AUTO?
+	protected Long idGledalac; // Protected jer se nasledjuje
+	
 	// ID ne jer se klasa nasledjuje
 	// Ulogu dodajemo iz sql-a
 	
 	// Jer lista moze da ima vise filmova, i film moze da bude u vise listi. mappedBy stavljam u Film klasi kao inverse end.	
-	@ManyToMany(mappedBy = "listaGledalaca")
+	@ManyToMany // (mappedBy = "listaGledalaca") ovo ne treba, vezuje se za Film -> listaGledalaca
 	private Set<Film> listaOdgledanihFilmova = new HashSet<>(); // Ili HashSet ili Lista
 	
 	// Rezervise projekcije a ne filmove

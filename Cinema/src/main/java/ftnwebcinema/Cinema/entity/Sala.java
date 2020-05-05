@@ -21,8 +21,7 @@ public class Sala implements Serializable{
 	@ManyToOne
 	private Bioskop bioskop;
 	
-	// Ovde treba projekcija ne film?
 	@ManyToMany
-	private Set<Film> terminskaListaProjekcija = new HashSet<>();
-
+	private Set<Projekcija> terminskaListaProjekcija = new HashSet<>();
+	// Pisalo Film umesto projekcija
 }

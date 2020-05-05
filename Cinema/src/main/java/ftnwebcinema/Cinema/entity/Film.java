@@ -39,9 +39,10 @@ public class Film implements Serializable{
 	
 	@ManyToMany
 	private Set<Gledalac> listaGledalaca = new HashSet<>();
-	
-	@ManyToMany(mappedBy = "terminskaListaProjekcija")
-	private Set<Sala> listaSala = new HashSet<>();
+
+//	Otislo u Projekcija, jer je u Sala terminskaListaProjekcija 
+//	@ManyToMany(mappedBy = "terminskaListaProjekcija")
+//	private Set<Sala> listaSala = new HashSet<>();
 	
 	@OneToMany(mappedBy = "film") // Spojeno sa Film film iz Ocena
 	private Set<Ocena> listaOcena = new HashSet<>();
