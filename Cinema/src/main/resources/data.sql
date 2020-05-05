@@ -1,0 +1,1 @@
+INSERT INTO BIOSKOP (naziv, adresa, broj_telefona_centrale, email) VALUES ('Bioskop Krusevac', 'Naziv Ulice BB', '037111222', 'bioskopkrusevac@gmail.com');
