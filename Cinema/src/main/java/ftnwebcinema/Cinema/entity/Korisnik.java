@@ -5,7 +5,7 @@ import java.io.Serializable;
 
 @SuppressWarnings("serial")
 @Entity // Ne treba da bude @Entity
-public class Korisnik implements Serializable { // Klasa je apstraktna jer se ne instancira
+public class Korisnik implements Serializable { // Apstraktna?
 
 	// protected enum Uloge{Gledalac, Menadzer, Administrator}; // 0, 1 i 2
 	
@@ -35,8 +35,7 @@ public class Korisnik implements Serializable { // Klasa je apstraktna jer se ne
 	protected String dob;
 	
 	@Column
-	protected String uloga; 
-	// enum Uloge?
+	protected String uloga; // enum Uloge? Za sada je String jer mi treba kontroler da bi ih razlikovao.
 	
 	@Column
 	protected Boolean aktivan;

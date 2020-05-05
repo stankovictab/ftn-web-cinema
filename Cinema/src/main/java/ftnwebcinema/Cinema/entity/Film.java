@@ -32,7 +32,7 @@ public class Film implements Serializable{
 	private String trajanje; // Integer? Sekunde? Ili samo tekst?
 	
 	@Column
-	private double srednjaOcena; // Za sad ce biti null, sa kontrolerom ce se izracunati
+	private double srednjaOcena; // Za sad ce biti 0, sa kontrolerom i funkcijama ce se izracunati.
 	
 	@OneToMany(mappedBy = "film") // Spojeno sa Film film u Projekcija. MappedBy da se ne pravi nova tabela.
 	private Set<Projekcija> listaProjekcija = new HashSet<>();

@@ -5,7 +5,7 @@ import java.util.*;
 
 @SuppressWarnings("serial")
 @Entity
-public class Gledalac extends Korisnik {	
+public class Gledalac extends Korisnik {
 	
 	// ID ne jer se klasa nasledjuje
 	// Ulogu dodajemo iz sql-a
@@ -22,4 +22,6 @@ public class Gledalac extends Korisnik {
 	@OneToMany(mappedBy = "gledalac")
 	private Set<Ocena> listaOcena = new HashSet<>();
 	// Lista Ocena (nova klasa) ili lista filmova koji imaju atribut ocena?
+	
+	// Moze konstruktor koji postavlja ulogu na Gledalac? Iz enumeracije? Kako se onda konstruktor okida?
 }
