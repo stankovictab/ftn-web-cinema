@@ -12,8 +12,10 @@ public class Ocena implements Serializable{
 	private Long idOcena;
 	
 	@ManyToOne 
-	// Mozes da budes vlasnik vise komentara, ali ne mozemo nas dvojica da budemo vlasnici istog komentara 
 	private Gledalac gledalac;
+	// Mozes da budes vlasnik vise komentara, ali ne mozemo nas dvojica da budemo vlasnici istog komentara
+	// 
+	// Ovde je kolona
 	
 	@ManyToOne // Zato sto vise ocena moze za jedan film, a ne mogu vise filmova da dele istu ocenu
 	private Film film;

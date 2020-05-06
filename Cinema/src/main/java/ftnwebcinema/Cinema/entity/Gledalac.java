@@ -18,14 +18,16 @@ public class Gledalac extends Korisnik {
 	@ManyToMany // (mappedBy = "listaGledalaca") ovo ne treba, vezuje se za Film -> listaGledalaca
 	private Set<Film> listaOdgledanihFilmova = new HashSet<>(); // Ili HashSet ili Lista
 	
-	// Rezervise projekcije a ne filmove
 	@OneToMany(mappedBy = "rezervator")
 	private Set<Projekcija> listaRezervisanihFilmova = new HashSet<>();
+	// Rezervise projekcije a ne filmove
+	// Vezano za Gledalac rezervator u Projekcija, tamo je kolona
 	
-	// Gledalac ima vise ocena
+	
 	@OneToMany(mappedBy = "gledalac")
 	private Set<Ocena> listaOcena = new HashSet<>();
-	// Lista Ocena (nova klasa) ili lista filmova koji imaju atribut ocena?
+	// Ide ka Ocena -> Gledalac gledalac, tu je kolona
+	
 	
 	// Moze konstruktor koji postavlja ulogu na Gledalac? Iz enumeracije? Kako se onda konstruktor okida?
 }

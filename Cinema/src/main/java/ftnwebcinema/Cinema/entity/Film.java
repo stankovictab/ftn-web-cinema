@@ -44,6 +44,8 @@ public class Film implements Serializable{
 //	@ManyToMany(mappedBy = "terminskaListaProjekcija")
 //	private Set<Sala> listaSala = new HashSet<>();
 	
-	@OneToMany(mappedBy = "film") // Spojeno sa Film film iz Ocena
+	@OneToMany(mappedBy = "film") 
 	private Set<Ocena> listaOcena = new HashSet<>();
+	// Spojeno sa Film film iz Ocena
+	// Tamo je kolona
 }

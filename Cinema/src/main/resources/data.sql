@@ -11,11 +11,15 @@ INSERT INTO BIOSKOP (naziv, adresa, broj_telefona_centrale, email, menadzer_bios
 
 INSERT INTO FILM (naziv, opis, zanr, trajanje, srednja_ocena) VALUES ('The Irishman', 'Opis filma The Irishman', 'Drama', '2h30m', 0);
 INSERT INTO FILM (naziv, opis, zanr, trajanje, srednja_ocena) VALUES ('Joker', 'Opis filma Joker', 'Drama/Akcija', '2h', 0);
+INSERT INTO FILM (naziv, opis, zanr, trajanje, srednja_ocena) VALUES ('El Camino', 'Opis filma El Camino', 'Drama/Akcija', '1h45m', 0);
 
-INSERT INTO PROJEKCIJA (film_id_film, datum_projekcije, cena_projekcije) VALUES (1, '01.05.2020.', 250); /* Projekcija 1 */ 
+/* Dodao rezervator_id_gledalac za projekciju 1 kao prvog gledaoca */
+/* Ficko gleda brbu */
+
+INSERT INTO PROJEKCIJA (film_id_film, datum_projekcije, cena_projekcije, rezervator_id_gledalac) VALUES (1, '01.05.2020.', 250, 1); /* Projekcija 1 */ 
 INSERT INTO PROJEKCIJA (film_id_film, datum_projekcije, cena_projekcije) VALUES (2, '05.05.2020.', 350); /* Projekcija 2 */ 
 INSERT INTO PROJEKCIJA (film_id_film, datum_projekcije, cena_projekcije) VALUES (1, '06.05.2020.', 250); /* Projekcija 3 */ 
-INSERT INTO PROJEKCIJA (film_id_film, datum_projekcije, cena_projekcije) VALUES (2, '09.05.2020.', 350); /* Projekcija 4 */ 
+INSERT INTO PROJEKCIJA (film_id_film, datum_projekcije, cena_projekcije, rezervator_id_gledalac) VALUES (3, '09.05.2020.', 350, 2); /* Projekcija 4 */ 
 
 INSERT INTO SALA (kapacitet, oznaka_sale, bioskop_id_bioskop) VALUES (100, 'A', 1); /* Sala 1 */ 
 INSERT INTO SALA (kapacitet, oznaka_sale, bioskop_id_bioskop) VALUES (50, 'B', 1); /* Sala 2 */ 
@@ -32,3 +36,8 @@ INSERT INTO SALA_TERMINSKA_LISTA_PROJEKCIJA (lista_sala_id_sala, terminska_lista
 /* U prvi bioskop ide prva projekcija */
 INSERT INTO BIOSKOP_RASPORED_ODRZAVANJA_FILMOVA(bioskop_id_bioskop, raspored_odrzavanja_filmova_id_projekcija) VALUES (1,1);
 INSERT INTO BIOSKOP_RASPORED_ODRZAVANJA_FILMOVA(bioskop_id_bioskop, raspored_odrzavanja_filmova_id_projekcija) VALUES (2,3);
+
+INSERT INTO OCENA (ocena, gledalac_id_gledalac, film_id_film) VALUES (100, 2, 3);
+INSERT INTO OCENA (ocena, gledalac_id_gledalac, film_id_film) VALUES (75, 1, 2);
+
+INSERT INTO PROJEKCIJA_LISTA_BIOSKOPOVAUKOJIMA_SE_PRIKAZUJE (PROJEKCIJA_ID_PROJEKCIJA, LISTA_BIOSKOPOVAUKOJIMA_SE_PRIKAZUJE_ID_BIOSKOP) VALUES (1, 1);
