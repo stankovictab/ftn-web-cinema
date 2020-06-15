@@ -41,5 +41,56 @@ public class Bioskop implements Serializable{
 	// Ovo je AKA Raspored Odrzavanja Filmova iz zadatka
 	// Vezano sa Projekcija -> listaBioskopa
 	// Ime tabele je BIOSKOPOVE_PROJEKCIJE
+
+	public Long getIdBioskop() {
+		return idBioskop;
+	}
+
+	public void setIdBioskop(Long idBioskop) {
+		this.idBioskop = idBioskop;
+	}
+
+	public String getNaziv() {
+		return naziv;
+	}
+
+	public void setNaziv(String naziv) {
+		this.naziv = naziv;
+	}
+
+	public String getAdresa() {
+		return adresa;
+	}
+
+	public void setAdresa(String adresa) {
+		this.adresa = adresa;
+	}
+
+	public String getBrojTelefonaCentrale() {
+		return brojTelefonaCentrale;
+	}
+
+	public void setBrojTelefonaCentrale(String brojTelefonaCentrale) {
+		this.brojTelefonaCentrale = brojTelefonaCentrale;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	
+	public Bioskop(){}
+
+	public Bioskop(String naziv, String adresa, String brojTelefonaCentrale, String email) {
+		this.naziv = naziv;
+		this.adresa = adresa;
+		this.brojTelefonaCentrale = brojTelefonaCentrale;
+		this.email = email;
+	}
+	
+	
 	
 }

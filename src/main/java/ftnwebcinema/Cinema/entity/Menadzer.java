@@ -19,4 +19,8 @@ public class Menadzer extends Korisnik {
 	// Menadzer se onda povezuje preko Bioskop u SQL komandi 
 	// (ovde je bila greska Referential Integrity Constraint Violation, obrnuti mappedBy i obrnuta komanda u SQL popravili)
 	
+	public Long getIdMenadzer() {
+		return idMenadzer;
+	}
+
 }

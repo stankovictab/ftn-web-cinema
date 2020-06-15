@@ -1,10 +1,10 @@
 /* Imena kolona citaj iz H2 */
 
-INSERT INTO ADMINISTRATOR (username, password, ime, prezime, telefon, email, dob, uloga, aktivan) VALUES ('djordje00','teskasifra','Djordje','Stankovic','+38165808808','djordjestankovic@gmail.com','01.05.2000.','Administrator', TRUE);
-INSERT INTO GLEDALAC (username, password, ime, prezime, telefon, email, dob, uloga, aktivan) VALUES ('marko_','mnogoteskasifra','Marko','Markovic','+3816512313','markom@gmail.com','29.08.1999.','Gledalac', TRUE);
-INSERT INTO GLEDALAC (username, password, ime, prezime, telefon, email, dob, uloga, aktivan) VALUES ('ficko','najtezaSifra','Filip','Filipovic','+38113452313','filip@gmail.com','29.08.1998.','Gledalac', TRUE);
-INSERT INTO MENADZER (username, password, ime, prezime, telefon, email, dob, uloga, aktivan) VALUES ('bobo','jostezasifra','Boban','Gavrilovic','+3816321312','bobang@gmail.com','29.02.2000.','Menadzer', TRUE);
-INSERT INTO MENADZER (username, password, ime, prezime, telefon, email, dob, uloga, aktivan) VALUES ('gogo','jostezasifra2','Gogan','Bavrilovic','+3811322222','goganb@gmail.com','13.02.1059.','Menadzer', TRUE);
+INSERT INTO ADMINISTRATOR (username, password, ime, prezime, telefon, email, dob, uloga, aktivan) VALUES ('djordje00','teskasifra','Djordje','Stankovic','+38165808808','djordjestankovic@gmail.com','01.05.2000.','Administrator', FALSE);
+INSERT INTO GLEDALAC (username, password, ime, prezime, telefon, email, dob, uloga, aktivan) VALUES ('marko_','mnogoteskasifra','Marko','Markovic','+3816512313','markom@gmail.com','29.08.1999.','Gledalac', FALSE);
+INSERT INTO GLEDALAC (username, password, ime, prezime, telefon, email, dob, uloga, aktivan) VALUES ('ficko','najtezasifra','Filip','Filipovic','+38113452313','filip@gmail.com','29.08.1998.','Gledalac', FALSE);
+INSERT INTO MENADZER (username, password, ime, prezime, telefon, email, dob, uloga, aktivan) VALUES ('bobo','jostezasifra','Boban','Gavrilovic','+3816321312','bobang@gmail.com','29.02.2000.','Menadzer', FALSE);
+INSERT INTO MENADZER (username, password, ime, prezime, telefon, email, dob, uloga, aktivan) VALUES ('gogo','jostezasifra2','Gogan','Bavrilovic','+3811322222','goganb@gmail.com','13.02.1059.','Menadzer', FALSE);
 
 INSERT INTO BIOSKOP (naziv, adresa, broj_telefona_centrale, email, menadzer_bioskopa_id_menadzer) VALUES ('Bioskop Krusevac', 'Naziv Ulice BB', '037111222', 'bioskopkrusevac@gmail.com', 1);
 INSERT INTO BIOSKOP (naziv, adresa, broj_telefona_centrale, email, menadzer_bioskopa_id_menadzer) VALUES ('Bioskop Novi Sad', 'Centar 01', '021221122', 'bioskopns@gmail.com', 2);

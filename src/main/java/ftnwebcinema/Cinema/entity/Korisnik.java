@@ -26,7 +26,7 @@ public class Korisnik implements Serializable { // Apstraktna?
 	protected String prezime;
 	
 	@Column
-	protected String telefon; // Long?
+	protected String telefon;
 	
 	@Column
 	protected String email;
@@ -35,11 +35,87 @@ public class Korisnik implements Serializable { // Apstraktna?
 	protected String dob;
 	
 	@Column
-	protected String uloga; // Za sada je String jer mi treba kontroler da bi ih razlikovao
+	protected String uloga;
 	
 	@Column
 	protected Boolean aktivan;
 	
-	// Geteri, seteri i konstruktori kod nasledjivaca za drugu tacku
+	// Geteri za ID su u nasledjenim klasama
+	
+	// Sledeci geteri i seteri su za DTO
+	
+	public String getIme() {
+		return ime;
+	}
+
+	public void setIme(String ime) {
+		this.ime = ime;
+	}
+
+	public String getPrezime() {
+		return prezime;
+	}
+
+	public void setPrezime(String prezime) {
+		this.prezime = prezime;
+	}
+
+	public String getUloga() {
+		return uloga;
+	}
+
+	public void setUloga(String uloga) {
+		this.uloga = uloga;
+	}
+
+	// Sledeci geteri i seteri su za obican objekat
+	
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getTelefon() {
+		return telefon;
+	}
+
+	public void setTelefon(String telefon) {
+		this.telefon = telefon;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getDob() {
+		return dob;
+	}
+
+	public void setDob(String dob) {
+		this.dob = dob;
+	}
+
+	public Boolean getAktivan() {
+		return aktivan;
+	}
+
+	public void setAktivan(Boolean aktivan) {
+		this.aktivan = aktivan;
+	}
 	
 }

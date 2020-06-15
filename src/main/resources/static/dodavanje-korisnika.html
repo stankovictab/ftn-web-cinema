@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+		integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+	<!-- Moj CSS -->
+	<link rel="stylesheet" href="style.css">
+
+	<!-- Font Awesome -->
+	<script src="https://kit.fontawesome.com/705b70177f.js" crossorigin="anonymous"></script>
+
+	<title>Dodavanje Korisnika</title>
+</head>
+
+<body onload="fokusiraj()">
+
+	<!-- Header -->
+	<!-- Treba da bude 3-6-3 ili 4-4-4 po kolonama -->
+	<!-- Sve u red, uvek -->
+	<div id="ftn-web-cinema-header" class="row align-items-center" style="height:69px">
+		<div class="col-sm-4 text-center">
+			<h3>Đorđe Stanković IN13-2018</h3>
+		</div>
+		<div class="col-sm-4 text-center">
+			<h1>ftn-web-cinema</h1>
+		</div>
+		<div class="col-sm-4 text-center">
+			<a id="github-dugme" class="btn btn-outline-primary" href="https://github.com/stankovictab/ftn-web-cinema"
+				target="_blank">
+				<!-- Ovo otvara novi tab, umesto na istom -->
+				GitHub
+				<i class="fab fa-github"></i>
+			</a>
+			<!-- btn-outline-secondary samo menja boju na hover -->
+		</div>
+	</div>
+
+	<!-- ****************************** -->
+
+	<!-- Forma -->
+	<div class="row standard-header">
+		<div class="col-md-4">
+		</div>
+		<div class="col-md-3 mt-5">
+			<h2>Dodavanje Korisnika</h2>
+		</div>
+		<div class="col-md-2 mt-5">
+			<a id="home-dugme" class="btn btn-outline-primary" href="index.html">
+				Nazad
+				<i class="fas fa-home"></i>
+			</a>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-4"></div> <!-- Separator -->
+
+		<form id="dodavanje-korisnika-forma" name="forma" class="forma col-md-4 mt-3 border border-dark rounded-lg">
+
+			<label for="username">Username :</label>
+			<input id="username" type="text" name="username" class="form-control">
+			<label for="password">Password :</label>
+			<input id="password" type="password" name="password" class="form-control">
+			<label for="ime">Ime :</label>
+			<input id="ime" type="text" name="ime" class="form-control">
+			<label for="prezime">Prezime :</label>
+			<input id="prezime" type="text" name="prezime" class="form-control">
+			<label for="telefon">Telefon :</label>
+			<input id="telefon" type="text" name="telefon" class="form-control">
+			<label for="email">E-Mail :</label>
+			<input id="email" type="email" name="email" class="form-control">
+			<label for="dob">Datum Rodjenja :</label>
+			<input id="dob" type="date" name="dob" class="form-control">
+			<!-- uloga je dropdown -->
+			<label for="uloga">Uloga :</label>
+			<select id="uloga" class="form-control">
+				<option value=""> Izaberite Ulogu </option>
+				<option value="gledalac"> Gledalac </option>
+				<option value="menadzer"> Menadzer </option>
+				<option value="administrator"> Administrator </option>
+			</select>
+
+			<!-- input za aktivan je izbrisan jer ce se promeniti pri prijavi korisnika -->
+
+			<div style="text-align: center">
+				<button type="submit" id="posalji-dugme" class="btn btn-primary mt-3">
+					<i class=" fas fa-paper-plane mr-2"></i>
+					Pošalji
+				</button>
+				<!-- Mora da bude tipa submit da bi AJAX funkcija radila -->
+			</div>
+
+		</form>
+
+	</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<!-- JS na dno body-a da se poslednje ucita -->
+	<!-- jQuery ja dodao bolji, ne slim build jer on nema AJAX -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<!-- Moj JS, mora da bude posle jQuery-a -->
+	<script type="text/javascript" src="script.js"></script>
+	<!-- Bootstrap-ov JS -->
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+		integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+		crossorigin="anonymous"></script>
+</body>
+
+</html>

@@ -15,4 +15,8 @@ public class Administrator extends Korisnik {
 	
 	// Ulogu iz SQL-a kao String (za sad)
 	
+	public Long getIdAdministrator() {
+		return idAdministrator;
+	}
+	
 }
