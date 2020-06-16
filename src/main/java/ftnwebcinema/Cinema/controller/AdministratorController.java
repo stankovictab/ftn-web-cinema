@@ -17,7 +17,7 @@ import ftnwebcinema.Cinema.entity.dto.AdministratorDTO;
 import ftnwebcinema.Cinema.service.AdministratorService;
 
 @RestController
-@RequestMapping(value = "/api/administratori") 
+@RequestMapping(value = "/administrator") 
 public class AdministratorController {
 	@Autowired 
 	private AdministratorService administratorService;

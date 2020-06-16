@@ -17,7 +17,7 @@ import ftnwebcinema.Cinema.entity.dto.MenadzerDTO;
 import ftnwebcinema.Cinema.service.MenadzerService;
 
 @RestController
-@RequestMapping(value = "/api/menadzeri") 
+@RequestMapping(value = "/menadzer") 
 public class MenadzerController {
 	@Autowired 
 	private MenadzerService menadzerService;

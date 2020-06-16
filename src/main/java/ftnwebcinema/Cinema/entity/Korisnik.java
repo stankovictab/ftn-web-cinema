@@ -1,9 +1,13 @@
 package ftnwebcinema.Cinema.entity;
 
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import java.io.Serializable;
 
 @SuppressWarnings("serial")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"}) // Dodato zbog ?? ali sa ovim radi kontrolerska metoda getGledalac
 @MappedSuperclass // Nije @Entity jer se nasledjuje, ne instancira se kao tabela
 public class Korisnik implements Serializable { // Apstraktna?
 

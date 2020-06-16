@@ -25,7 +25,7 @@ import org.springframework.http.ResponseEntity;
 // 5. Dodao @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"}) u Gledalac jer bez toga nece, niko ne zna sto
 
 @RestController // Ne @Controller (ne znam da li moze sa tim) jer hocemo kontroler koji funkcionise kao endpoint RESTful servisa, rezultat svake metode kontrolera treba da se vrati kao JSON u body-u
-@RequestMapping(value = "/api/gledaoci") 
+@RequestMapping(value = "/gledalac") 
 // RequestMapping ima za value "bazni url koji klasa obradjuje" odnosno homepage za kontroler, od ovoga ide mapiranje na npr /{id}
 // Ovo ustvari msm da i nije toliko bitno jer moze za svaku metodu kontrolera da se stavi value (ovo je default mapiranje za one koji nemaju value)
 public class GledalacController {
@@ -78,22 +78,19 @@ public class GledalacController {
 		return new ResponseEntity<>(nepotrebniDTO, HttpStatus.OK);
 	}
 	
-	// !!! NIJE PREKOPIRANO U OSTALE KONTROLERE JER NE FUNKCIONISE
-	// Nova metoda za prijavu
-	// Dobija od AJAX-a JSON sa username, password, i aktivan postavljen na true
+	// Metoda za prijavu na sistem
+	// Dobija od AJAX-a JSON sa username, password, i aktivan za tog korisnika postavljen na true u bazi
 	// Treba da gleda da li taj korisnik postoji, ako ne, izbaci alert za gresku
-	// ? Onaj if sa uslovom getByUsername && getByPassword, pa da menja aktivan status
-	// Rade valjda i path i value za mapiranje
+	// Rade i path i value za mapiranje na /prijava
 	@PostMapping(value="/prijava", consumes = MediaType.APPLICATION_JSON_VALUE)
 	public boolean prijavi(@RequestBody Gledalac gledalac) { // Ne DTO jer nema username
 		System.out.println("usao");
 		try {
 			Gledalac gogi = gledalacService.updateAktivnost(gledalac);
-			System.out.println(gogi.getAktivan());
-			return true;
+			System.out.println(gogi.getAktivan()); // Za test, ne mora da pravi novog Gledaoca
+			return true; // Prolazi i ulazi u success deo AJAX-a
 		} catch (Exception e) {
 			e.printStackTrace();
-			System.out.println("\n");
 			System.out.println("Greska! Gledalac ne postoji.");
 			return false; // Vrati false da bi se aktivirao error u AJAX-u
 		}

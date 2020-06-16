@@ -68,24 +68,24 @@
 			<input id="naziv" type="text" name="naziv" class="form-control">
 			<label for="adresa">Adresa :</label>
 			<input id="adresa" type="text" name="adresa" class="form-control">
-			<label for="btc">Broj Telefona Centrale :</label>
-			<input id="btc" type="tel" name="btc" class="form-control">
+			<label for="brojTelefonaCentrale">Broj Telefona Centrale :</label>
+			<input id="brojTelefonaCentrale" type="tel" name="brojTelefonaCentrale" class="form-control">
 			<label for="email">E-Mail :</label>
 			<input id="email" type="email" name="email" class="form-control">
 			<label for="brojsala">Broj Sala :</label>
 			<input id="brojsala" type="number" name="brojsala" class="form-control">
 
-			<!-- menadzer dropdown? -->
-			<label for="uloga">Menadžer :</label>
-			<select id="uloga" class="form-control">
+			<label for="menadzer-dropdown">Menadžer :</label>
+			<select id="menadzer-dropdown" class="form-control">
 				<option value=""> Izaberite Menadžera </option>
-				<option value="gledalac"> 1 </option>
-				<option value="menadzer"> 2 </option>
-				<option value="administrator"> 3 </option>
+				<option value=""> Ovo je za trecu tacku </option>
+				<option value=""> Dobice listu menadzera iz AJAX-a, </option>
+				<option value=""> pa ce napuniti ove opcije, </option>
+				<option value=""> i promeniti value atribut </option>
 			</select>
 
 			<div style="text-align: center; margin-top: 10px">
-				<button type="submit" id="posalji-dugme" class="btn btn-primary mt-3" onclick="prikaziPorukuBioskop()">
+				<button type="submit" id="posalji-dugme" class="btn btn-primary mt-3">
 					<i class="fas fa-paper-plane mr-2"></i>
 					Pošalji
 				</button>
@@ -95,32 +95,13 @@
 
 	</div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	<!-- ---------------------------------------------- -->
 
 	<!-- JS na dno body-a da se poslednje ucita -->
 	<!-- jQuery ja dodao bolji, ne slim build jer on nema AJAX -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<!-- Moj JS, mora da bude posle jQuery-a -->
-	<script type="text/javascript" src="script.js"></script>
+	<script type="text/javascript" src="scriptBioskop.js"></script>
 	<!-- Bootstrap-ov JS -->
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
 		integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"

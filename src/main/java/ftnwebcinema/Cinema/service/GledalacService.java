@@ -15,8 +15,5 @@ public interface GledalacService {
 	Gledalac updateAktivnost(Gledalac gledalac) throws Exception; // Moze da baci exception ako ne moze da ga updatuje (ako on ne postoji)
 
     void delete(Long id);
-    
-    // Dodato
-    List<Gledalac> findAllByUsername(String username);
 
 }

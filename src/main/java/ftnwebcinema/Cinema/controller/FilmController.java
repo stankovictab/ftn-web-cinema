@@ -12,38 +12,38 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import ftnwebcinema.Cinema.entity.Bioskop;
-import ftnwebcinema.Cinema.entity.dto.BioskopDTO;
-import ftnwebcinema.Cinema.service.BioskopService;
+import ftnwebcinema.Cinema.entity.Film;
+import ftnwebcinema.Cinema.entity.dto.FilmDTO;
+import ftnwebcinema.Cinema.service.FilmService;
 
 @RestController
-@RequestMapping(value = "/bioskop") 
-public class BioskopController {
+@RequestMapping(value = "/film") 
+public class FilmController {
 	
 	@Autowired 
-	private BioskopService bioskopService;
+	private FilmService filmService;
 	
 	@GetMapping(value="/{id}", produces=MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Bioskop> getBioskop(@PathVariable(name="id") Long id){
-		Bioskop temp = this.bioskopService.findOne(id);
+	public ResponseEntity<Film> getFilm(@PathVariable(name="id") Long id){
+		Film temp = this.filmService.findOne(id);
 		return new ResponseEntity<>(temp, HttpStatus.OK);
 	}
 	
 	@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<List<BioskopDTO>> getBioskopi() {
-        List<Bioskop> nadjenaLista = this.bioskopService.findAll();
-        List<BioskopDTO> novaLista = new ArrayList<>();
-        for (Bioskop g : nadjenaLista) {
-        	BioskopDTO tempBioskopDTO = new BioskopDTO(g.getIdBioskop(), g.getNaziv(), g.getAdresa());
-        	novaLista.add(tempBioskopDTO);
+    public ResponseEntity<List<FilmDTO>> getFilmovi() {
+        List<Film> nadjenaLista = this.filmService.findAll();
+        List<FilmDTO> novaLista = new ArrayList<>();
+        for (Film g : nadjenaLista) {
+        	FilmDTO tempFilmDTO = new FilmDTO(g.getIdFilm(), g.getNaziv(), g.getZanr());
+        	novaLista.add(tempFilmDTO);
         }
         return new ResponseEntity<>(novaLista, HttpStatus.OK);
     }
 	
 	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<BioskopDTO> napraviBioskop(@RequestBody Bioskop dobijeni) throws Exception {
-		Bioskop zaUBazu = bioskopService.napravi(dobijeni); 
-		BioskopDTO nepotrebniDTO = new BioskopDTO(zaUBazu.getIdBioskop(), zaUBazu.getNaziv(), zaUBazu.getAdresa());
+	public ResponseEntity<FilmDTO> napraviFilm(@RequestBody Film dobijeni) throws Exception {
+		Film zaUBazu = filmService.napravi(dobijeni); 
+		FilmDTO nepotrebniDTO = new FilmDTO(zaUBazu.getIdFilm(), zaUBazu.getNaziv(), zaUBazu.getZanr());
 		return new ResponseEntity<>(nepotrebniDTO, HttpStatus.OK);
 	}
 }

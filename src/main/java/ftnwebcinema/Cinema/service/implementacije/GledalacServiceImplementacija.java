@@ -42,30 +42,21 @@ public class GledalacServiceImplementacija implements GledalacService {
 		// Bila je njena metoda ali samo za update imena
 		@Override
 		public Gledalac updateAktivnost(Gledalac gledalac) throws Exception {
-			System.out.println("test0");
-			Gledalac neUpdatovan = this.gledalacRepo.getOne(gledalac.getIdGledalac()); // Ovde puca i tu baca exception koji se hvata u kontroleru
-			System.out.println("test1");
-			if (neUpdatovan == null) {
-	        	System.out.println("test2");
-	            throw new Exception("Gledalac ne moze da se update-uje jer ne postoji.");
-	        }
-			System.out.println("test3");
+			Gledalac nadjen = this.gledalacRepo.findByUsername(gledalac.getUsername()); // Ja trazio po id pa bacalo exception
+			if(nadjen.getUsername() == null) {
+				throw new Exception("Gledalac ne moze da se update-uje jer ne postoji.");
+			}
 	        // Postavljanje nove vrednosti
-	        neUpdatovan.setAktivan(true);
-	        System.out.println("test4");
-	        // Cuvanje u bazi
-	        Gledalac updatovan = this.gledalacRepo.save(neUpdatovan);
+	        nadjen.setAktivan(true);
+	        // Cuvanje u bazi, ne mora da napravi novog lika, ali je to tu zbog debug-a u kontroleru (gogi)
+	        Gledalac updatovan = this.gledalacRepo.save(nadjen);
+	        System.out.println("Korisnik prijavljen, Aktivan postavljen na true"); // Za debug
 	        return updatovan;
 		}
 
 		@Override
 		public void delete(Long id) {
 			this.gledalacRepo.deleteById(id); // Samo brise po id, predefinisana funkcija
-		}
-
-		@Override
-		public List<Gledalac> findAllByUsername(String username) {
-			return this.gledalacRepo.findAllByUsername(username);
 		}
 
 }
