@@ -66,19 +66,19 @@
 		<form id="dodavanje-korisnika-forma" name="forma" class="forma col-md-4 mt-3 border border-dark rounded-lg">
 
 			<label for="username">Username :</label>
-			<input id="username" type="text" name="username" class="form-control">
+			<input id="username" type="text" name="username" class="form-control" required>
 			<label for="password">Password :</label>
-			<input id="password" type="password" name="password" class="form-control">
+			<input id="password" type="password" name="password" class="form-control" required>
 			<label for="ime">Ime :</label>
-			<input id="ime" type="text" name="ime" class="form-control">
+			<input id="ime" type="text" name="ime" class="form-control" required>
 			<label for="prezime">Prezime :</label>
-			<input id="prezime" type="text" name="prezime" class="form-control">
+			<input id="prezime" type="text" name="prezime" class="form-control" required>
 			<label for="telefon">Telefon :</label>
-			<input id="telefon" type="text" name="telefon" class="form-control">
+			<input id="telefon" type="text" name="telefon" class="form-control" required>
 			<label for="email">E-Mail :</label>
-			<input id="email" type="email" name="email" class="form-control">
+			<input id="email" type="email" name="email" class="form-control" required>
 			<label for="dob">Datum Rodjenja :</label>
-			<input id="dob" type="date" name="dob" class="form-control">
+			<input id="dob" type="date" name="dob" class="form-control" required>
 			<!-- Uloga nije vise dropdown -->
 			<!-- <label for="uloga">Uloga :</label>
 			<select id="uloga" class="form-control">
@@ -87,8 +87,6 @@
 				<option value="menadzer"> Menadzer </option>
 				<option value="administrator"> Administrator </option>
 			</select> -->
-
-			<!-- Korisnik postaje aktivan cim se registruje ili prijavi -->
 
 			<div style="text-align: center">
 				<button type="submit" id="posalji-dugme" class="btn btn-primary mt-3">

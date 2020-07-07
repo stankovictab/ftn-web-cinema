@@ -25,9 +25,15 @@ public class AdministratorServiceImplementacija implements AdministratorService 
 		}
 		
 		@Override
-		public Administrator findOne(Long id) {
+		public Administrator findOneById(Long id) {
 			Administrator nadjeni = this.administratorRepo.getOne(id); 
 			// Povratna vrednost od getOne (nije findOne) iz JpaRepository je taj objekat sa tim id-em
+	        return nadjeni;
+		}
+		
+		@Override
+		public Administrator findOneByUsername(String username) {
+			Administrator nadjeni = this.administratorRepo.findByUsername(username); 
 	        return nadjeni;
 		}
 		

@@ -5,6 +5,7 @@ public class MenadzerDTO {
 	private String ime;
 	private String prezime;
 	private String uloga;
+	private Boolean aktivan; // Mora zbog scriptAktivacija
 	public Long getIdMenadzer() {
 		return idMenadzer;
 	}
@@ -29,13 +30,19 @@ public class MenadzerDTO {
 	public void setUloga(String uloga) {
 		this.uloga = uloga;
 	}
+	public Boolean getAktivan() {
+		return aktivan;
+	}
+	public void setAktivan(Boolean aktivan) {
+		this.aktivan = aktivan;
+	}
 	public MenadzerDTO() {}
-	public MenadzerDTO(Long id, String ime, String prezime, String uloga) {
+	public MenadzerDTO(Long id, String ime, String prezime, String uloga, Boolean aktivan) {
 		this.idMenadzer = id;
 		this.ime = ime;
 		this.prezime = prezime;
 		this.uloga = uloga;
+		this.aktivan = aktivan;
 	}
-	
 	
 }

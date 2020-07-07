@@ -60,6 +60,7 @@
 				<i class="fas fa-door-open"></i>
 				Odjava
 				<!-- Za sad odjava je samo redirect na index, mada ne znam sta vise od toga treba -->
+				<!-- Odjava ne mora da resetuje localStorage jer ce se on overwrite-ovati na novoj prijavi -->
 			</a>
 
 			<!-- Admin moze da doda, menja i brise bioskop -->
@@ -70,6 +71,12 @@
 				style="background-color: #b1ccfd">
 				<i class="fas fa-user"></i>
 				Registracija Menadzera
+			</a>
+
+			<a id="homepage-dugme" class="btn btn-outline-primary" href="aktivacija-menadzera.html"
+				style="background-color: #b1ccfd">
+				<i class="fas fa-plug"></i>
+				Aktivacija Menadzera
 			</a>
 
 			<a id="homepage-dugme" class="btn btn-outline-primary mt-4" href="dodavanje-bioskopa.html"

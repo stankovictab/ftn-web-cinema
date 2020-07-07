@@ -20,9 +20,8 @@ $(document).on("submit", "form", function (event) {
 		"telefon": $("#telefon").val(),
 		"email": $("#email").val(),
 		"dob": $("#dob").val(),
-		"uloga": "menadzer", // Bilo je "uloga": $("#uloga").val(),
-		"aktivan": true // Korisnik je aktivan kada napravi nalog, ne mora posle toga da se prijavi da bi taj bool promenio
-		// Ovo aktivan ce se menjati
+		"uloga": "menadzer",
+		"aktivan": false // Aktivirace ga administrator (confirm-ovace)
 	});
 
 	$.ajax({
@@ -32,11 +31,13 @@ $(document).on("submit", "form", function (event) {
 		contentType: "application/json", // Podaci koje saljemo
 		data: mojJSON, // Saljemo objekat koji smo napravili, on je taj data JSON
 		success: function () {
-			alert($("#ime").val() + " " + $("#prezime").val() + " je kreiran.");
-			window.location.href = "index.html"; // Redirect
+			alert($("#ime").val() + " " + $("#prezime").val() + " je kreiran. \n Moci cete pristupiti profilu kada vam nalog aktivira administrator. \nSledi redirect na pocetnu stranicu.");
+			// localStorage.setItem("user", $("#username").val()); // Ovo samo pravi zabunu u index-u admina pa se ne radi
+			window.location.href = "index-administrator.html";
+			// Posto samo admin moze da registruje menadzera, ide nazad na njegov index
 		},
 		error: function (data) {
-			alert("Greška!");
+			alert("Menadzer sa tim username-om vec postoji!");
 		}
 	});
 });

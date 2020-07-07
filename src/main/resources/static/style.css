@@ -43,7 +43,7 @@ body{
 
 #homepage-dugme{
 	display: block;
-	margin: 40px 10%;
+	margin: 40px 0%; /* Bilo 40px 10% */
 	color: #212529 !important;
 	font-size: 24px;
 	font-weight: 500;
@@ -129,14 +129,18 @@ label{
 
 /* Tabele */
 
+table {
+	text-align: center;
+}
+
 thead td{
 	border: 3px solid rgb(50, 50, 50);
-	padding: 6px 50px;
+	padding: 6px 45px;
 	font-weight: 800;
 	font-size: 20px;
 }
 
 td{
 	border: 1px solid rgb(100, 100, 100);
-	padding: 6px 50px;
+	padding: 6px 45px;
 }

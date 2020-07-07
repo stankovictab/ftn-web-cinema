@@ -94,6 +94,4 @@ public class Bioskop implements Serializable{
 		this.email = email;
 	}
 	
-	
-	
 }

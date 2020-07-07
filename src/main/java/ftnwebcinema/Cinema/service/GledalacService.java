@@ -8,7 +8,9 @@ public interface GledalacService {
 	
 	Gledalac napravi(Gledalac gledalac) throws Exception; // Moze da baci exception ako ne moze da ga napravi (ako je prosledjen ID nesto drugo od null)
 	
-	Gledalac findOne(Long id);
+	Gledalac findOneById(Long id);
+	
+	Gledalac findOneByUsername(String username);
 	
 	List<Gledalac> findAll();
 

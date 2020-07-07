@@ -42,7 +42,7 @@ public class GledalacController {
 	@GetMapping(value="/{id}", produces=MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Gledalac> getGledalac(@PathVariable(name="id") Long id){
 		// PathVariable je ovaj {id} koji koristimo
-		Gledalac temp = this.gledalacService.findOne(id);
+		Gledalac temp = this.gledalacService.findOneById(id);
 		temp.setPassword("NEMATE PRISTUP SIFRI"); // Da se ne bi sifra videla iz konzole na F12, ovo ne menja nista u bazi
 		// Saljemo temp, a ne dto
 		return new ResponseEntity<>(temp, HttpStatus.OK);
@@ -65,10 +65,17 @@ public class GledalacController {
 	
 	// Kontroler metoda za kreiranje gledaoca
 	// Radi se POST jer saljemo na server
-	// Metoda i prima i salje JSON
+	// Metoda i prima i salje JSON (mada ne mora da salje)
 	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<GledalacDTO> napraviGledaoca(@RequestBody Gledalac dobijeni) throws Exception {
+		// Provera da li vec postoji korisnik sa tim username-om
+		Gledalac tester = gledalacService.findOneByUsername(dobijeni.getUsername());
+		if(tester != null) { // Odnosno ako ga nadje
+			// Print za getUsername kojeg nema ce baciti null pointer exception (ustvari bilo koja operacija sa tester, jer je on null)
+			throw new Exception("Gledalac sa tim username-om vec postoji!");
+		}
 		// Za id i za upisivanje u bazu (dobijeni je ceo pun objekat iz AJAX-a, samo bez id-a)
+		// zaUBazu je isto nepotreban
 		Gledalac zaUBazu = gledalacService.napravi(dobijeni);
 		// Vracamo dto od njega kao povratnu vrednost (da dto ima id), ali zasto? Nema potrebe, ne koristi se nigde?
 		GledalacDTO nepotrebniDTO = new GledalacDTO(zaUBazu.getIdGledalac(), 

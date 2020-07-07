@@ -25,9 +25,15 @@ public class MenadzerServiceImplementacija implements MenadzerService {
 		}
 		
 		@Override
-		public Menadzer findOne(Long id) {
+		public Menadzer findOneById(Long id) {
 			Menadzer nadjeni = this.menadzerRepo.getOne(id); 
 			// Povratna vrednost od getOne (nije findOne) iz JpaRepository je taj objekat sa tim id-em
+	        return nadjeni;
+		}
+		
+		@Override
+		public Menadzer findOneByUsername(String username) {
+			Menadzer nadjeni = this.menadzerRepo.findByUsername(username); 
 	        return nadjeni;
 		}
 		

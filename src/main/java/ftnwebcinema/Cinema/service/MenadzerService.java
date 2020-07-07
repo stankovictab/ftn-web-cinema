@@ -8,7 +8,9 @@ public interface MenadzerService {
 	
 	Menadzer napravi(Menadzer menadzer) throws Exception; // Moze da baci exception ako ne moze da ga napravi (ako je prosledjen ID nesto drugo od null)
 	
-	Menadzer findOne(Long id);
+	Menadzer findOneById(Long id);
+	
+	Menadzer findOneByUsername(String username);
 	
 	List<Menadzer> findAll();
 

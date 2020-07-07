@@ -26,10 +26,16 @@ public class GledalacServiceImplementacija implements GledalacService {
 	    }
 
 		@Override
-		public Gledalac findOne(Long id) {
+		public Gledalac findOneById(Long id) {
 			Gledalac nadjeni = this.gledalacRepo.getOne(id); 
 			// Povratna vrednost od getOne (nije findOne) iz JpaRepository je taj objekat sa tim id-em
 	        return nadjeni;
+		}
+		
+		@Override
+		public Gledalac findOneByUsername(String username) {
+			Gledalac nadjeni = this.gledalacRepo.findByUsername(username);
+			return nadjeni;
 		}
 
 		@Override

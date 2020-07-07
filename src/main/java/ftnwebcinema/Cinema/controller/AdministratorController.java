@@ -24,7 +24,7 @@ public class AdministratorController {
 	
 	@GetMapping(value="/{id}", produces=MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Administrator> getAdministrator(@PathVariable(name="id") Long id){
-		Administrator temp = this.administratorService.findOne(id);
+		Administrator temp = this.administratorService.findOneById(id);
 		temp.setPassword("NEMATE PRISTUP SIFRI");
 		return new ResponseEntity<>(temp, HttpStatus.OK);
 	}
@@ -42,7 +42,16 @@ public class AdministratorController {
 	
 	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<AdministratorDTO> napraviAdministratora(@RequestBody Administrator dobijeni) throws Exception {
-		Administrator zaUBazu = administratorService.napravi(dobijeni); 
+		// Provera da li vec postoji korisnik sa tim username-om
+		Administrator tester = administratorService.findOneByUsername(dobijeni.getUsername());
+		if(tester != null) { // Odnosno ako ga nadje
+			// Print za getUsername kojeg nema ce baciti null pointer exception (ustvari bilo koja operacija sa tester, jer je on null)
+			throw new Exception("Administrator sa tim username-om vec postoji!");
+		}
+		// Za id i za upisivanje u bazu (dobijeni je ceo pun objekat iz AJAX-a, samo bez id-a)
+		// zaUBazu je isto nepotreban
+		Administrator zaUBazu = administratorService.napravi(dobijeni);
+		// Vracamo dto od njega kao povratnu vrednost (da dto ima id), ali zasto? Nema potrebe, ne koristi se nigde?
 		AdministratorDTO nepotrebniDTO = new AdministratorDTO(zaUBazu.getIdAdministrator(), 
 													zaUBazu.getIme(), 
 													zaUBazu.getPrezime(), 

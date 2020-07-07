@@ -16,17 +16,17 @@
 	<!-- Font Awesome -->
 	<script src="https://kit.fontawesome.com/705b70177f.js" crossorigin="anonymous"></script>
 
-	<title>Prijava</title>
+	<title>Aktivacija Menadzera</title>
 </head>
 
-<body onload="fokusiraj()">
+<body>
 
 	<!-- Header -->
 	<!-- Treba da bude 3-6-3 ili 4-4-4 po kolonama -->
 	<!-- Sve u red, uvek -->
 	<div id="ftn-web-cinema-header" class="row align-items-center" style="height:69px">
 		<div class="col-sm-4 text-center">
-			<h3>Đorđe Stanković IN13-2018</h3>
+			<h3 id="easteregg">Đorđe Stanković IN13-2018</h3>
 		</div>
 		<div class="col-sm-4 text-center">
 			<h1>ftn-web-cinema</h1>
@@ -44,14 +44,15 @@
 
 	<!-- ****************************** -->
 
-	<div class="row standard-header">
+	<div id="tabela-naslov-red" class="row standard-header">
 		<div class="col-md-4">
 		</div>
-		<div class="col-md-3 mt-5">
-			<h1>Prijava</h1>
+		<div class="col-md-4 mt-5 mb-4">
+			<h1 id="tabela-naslov">Aktivacija Menadzera</h1>
 		</div>
-		<div class="col-md-2 mt-5">
-			<a id="home-dugme" class="btn btn-outline-primary" href="index.html">
+		<div class="col-md-4 mt-5 mb-4">
+			<a id="home-dugme" class="btn btn-outline-primary" onclick="history.back()">
+				<!-- Mora da se vrati nazad, ne na pocetni index.html -->
 				Nazad
 				<i class="fas fa-home"></i>
 			</a>
@@ -59,37 +60,44 @@
 	</div>
 
 	<div class="row">
-		<div class="col-md-4"></div> <!-- Separator -->
+		<div class="col-md-2"></div> <!-- Separator -->
 
-		<form id="prijava-forma" name="forma" class="forma col-md-4 mt-3 border border-dark rounded-lg">
+		<div class="col-md-6">
+			<table id="tabela-menadzera">
+				<!-- Dodaj id za AJAX, on ce puniti tabelu i dodati dugme, a i njemu omoguciti otvaranje profila -->
+				<thead>
+					<tr>
+						<td>ID</td>
+						<td>Ime</td>
+						<td>Prezime</td>
+						<td>Aktivnost</td>
+						<td>Aktivacija</td>
+						<td>Brisanje</td>
+					</tr>
+				</thead>
+				<tr>
+				</tr>
+			</table>
 
-			<label for="username">Username :</label>
-			<input id="username" type="text" name="username" class="form-control" required>
-			<label for="password">Password :</label>
-			<input id="password" type="password" name="password" class="form-control" required>
-
-			<div style="text-align: center; margin-top: 10px">
-				<button type="submit" id="posalji-dugme" class="btn btn-primary mt-3">
-					<i class="fas fa-paper-plane mr-2"></i>
-					Pošalji
-				</button>
-			</div>
-
-		</form>
+		</div>
 
 	</div>
 
 	<!-- ---------------------------------------------- -->
 
+	<div style="text-align: center">
+		<iframe width="100%" height="720" autoplay="true"></iframe>
+	</div>
 	<!-- JS na dno body-a da se poslednje ucita -->
 	<!-- jQuery ja dodao bolji, ne slim build jer on nema AJAX -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<!-- Moj JS, mora da bude posle jQuery-a -->
-	<script type="text/javascript" src="scriptPrijava.js"></script>
+	<script type="text/javascript" src="scriptAktivacijaMenadzera.js"></script>
 	<!-- Bootstrap-ov JS -->
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
 		integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
 		crossorigin="anonymous"></script>
+
 </body>
 
 </html>

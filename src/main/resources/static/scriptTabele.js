@@ -1,8 +1,3 @@
-// TODO Kada se odradi izbrisati onclick u AJAX dugmetu
-function brisanjeMessage() {
-	alert("Brisanje ce se odraditi za trecu tacku.");
-}
-
 // Punjenje tabele
 $("#tabela-gledalaca").ready(function () {
 	$.ajax({
@@ -21,9 +16,9 @@ $("#tabela-gledalaca").ready(function () {
 				var dugmeProfil = "<button class='dugmeProfil btn btn-secondary' id = " + data[i]['idGledalac'] + ">Vidi Profil</button>";
 				// Sa + "zaProfil" nece lepo da gadja url u sledecoj AJAX funkciji, jer dodaje + this.id koji dobija iz ovog button-a (to je onaj /{id} u kontroleru)
 				// Nazalost moraju da imaju isti id :(
-				var dugmeIzbrisi = "<button onclick='brisanjeMessage()' class='dugmeIzbrisi btn btn-danger' id = " + data[i]['idGledalac'] + ">Izbrisi</button>";
+				// var dugmeIzbrisi = "<button onclick='brisanjeMessage()' class='dugmeIzbrisi btn btn-danger' id = " + data[i]['idGledalac'] + ">Izbrisi</button>";
 				row += "<td>" + dugmeProfil + "</td>";
-				row += "<td>" + dugmeIzbrisi + "</td>";
+				// row += "<td>" + dugmeIzbrisi + "</td>";
 				row += "</tr>";
 				$('#tabela-gledalaca').append(row);
 				// "row" je string HTML koda koji se dodaje na tabelu koja ima ovaj id 
@@ -91,9 +86,9 @@ $("#tabela-menadzera").ready(function () {
 				var dugmeProfil = "<button class='dugmeProfil btn btn-secondary' id = " + data[i]['idMenadzer'] + ">Vidi Profil</button>";
 				// Sa + "zaProfil" nece lepo da gadja url u sledecoj AJAX funkciji, jer dodaje + this.id koji dobija iz ovog button-a (to je onaj /{id} u kontroleru)
 				// Nazalost moraju da imaju isti id :(
-				var dugmeIzbrisi = "<button onclick='brisanjeMessage()' class='dugmeIzbrisi btn btn-danger' id = " + data[i]['idMenadzer'] + ">Izbrisi</button>";
+				// var dugmeIzbrisi = "<button onclick='brisanjeMessage()' class='dugmeIzbrisi btn btn-danger' id = " + data[i]['idMenadzer'] + ">Izbrisi</button>";
 				row += "<td>" + dugmeProfil + "</td>";
-				row += "<td>" + dugmeIzbrisi + "</td>";
+				// row += "<td>" + dugmeIzbrisi + "</td>";
 				row += "</tr>";
 				$('#tabela-menadzera').append(row);
 				// "row" je string HTML koda koji se dodaje na tabelu koja ima ovaj id 
@@ -161,9 +156,9 @@ $("#tabela-administratora").ready(function () {
 				var dugmeProfil = "<button class='dugmeProfil btn btn-secondary' id = " + data[i]['idAdministrator'] + ">Vidi Profil</button>";
 				// Sa + "zaProfil" nece lepo da gadja url u sledecoj AJAX funkciji, jer dodaje + this.id koji dobija iz ovog button-a (to je onaj /{id} u kontroleru)
 				// Nazalost moraju da imaju isti id :(
-				var dugmeIzbrisi = "<button onclick='brisanjeMessage()' class='dugmeIzbrisi btn btn-danger' id = " + data[i]['idAdministrator'] + ">Izbrisi</button>";
+				// var dugmeIzbrisi = "<button onclick='brisanjeMessage()' class='dugmeIzbrisi btn btn-danger' id = " + data[i]['idAdministrator'] + ">Izbrisi</button>";
 				row += "<td>" + dugmeProfil + "</td>";
-				row += "<td>" + dugmeIzbrisi + "</td>";
+				// row += "<td>" + dugmeIzbrisi + "</td>";
 				row += "</tr>";
 				$('#tabela-administratora').append(row);
 				// "row" je string HTML koda koji se dodaje na tabelu koja ima ovaj id 
@@ -231,9 +226,9 @@ $("#tabela-bioskopa").ready(function () {
 				var dugmeProfil = "<button class='dugmeProfil btn btn-secondary' id = " + data[i]['idBioskop'] + ">Vidi Bioskop</button>";
 				// Sa + "zaProfil" nece lepo da gadja url u sledecoj AJAX funkciji, jer dodaje + this.id koji dobija iz ovog button-a (to je onaj /{id} u kontroleru)
 				// Nazalost moraju da imaju isti id :(
-				var dugmeIzbrisi = "<button onclick='brisanjeMessage()' class='dugmeIzbrisi btn btn-danger' id = " + data[i]['idBioskop'] + ">Izbrisi</button>";
+				// var dugmeIzbrisi = "<button onclick='brisanjeMessage()' class='dugmeIzbrisi btn btn-danger' id = " + data[i]['idBioskop'] + ">Izbrisi</button>";
 				row += "<td>" + dugmeProfil + "</td>";
-				row += "<td>" + dugmeIzbrisi + "</td>";
+				// row += "<td>" + dugmeIzbrisi + "</td>";
 				row += "</tr>";
 				$('#tabela-bioskopa').append(row);
 				// "row" je string HTML koda koji se dodaje na tabelu koja ima ovaj id 
@@ -296,9 +291,9 @@ $("#tabela-filmova").ready(function () {
 				var dugmeProfil = "<button class='dugmeProfil btn btn-secondary' id = " + data[i]['idFilm'] + ">Vidi Film</button>";
 				// Sa + "zaProfil" nece lepo da gadja url u sledecoj AJAX funkciji, jer dodaje + this.id koji dobija iz ovog button-a (to je onaj /{id} u kontroleru)
 				// Nazalost moraju da imaju isti id :(
-				var dugmeIzbrisi = "<button onclick='brisanjeMessage()' class='dugmeIzbrisi btn btn-danger' id = " + data[i]['idFilm'] + ">Izbrisi</button>";
+				// var dugmeIzbrisi = "<button onclick='brisanjeMessage()' class='dugmeIzbrisi btn btn-danger' id = " + data[i]['idFilm'] + ">Izbrisi</button>";
 				row += "<td>" + dugmeProfil + "</td>";
-				row += "<td>" + dugmeIzbrisi + "</td>";
+				// row += "<td>" + dugmeIzbrisi + "</td>";
 				row += "</tr>";
 				$('#tabela-filmova').append(row);
 				// "row" je string HTML koda koji se dodaje na tabelu koja ima ovaj id 
@@ -339,6 +334,35 @@ $("#tabela-filmova").on('click', '.dugmeProfil', function () { // Na klik dugmet
 		}
 	});
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

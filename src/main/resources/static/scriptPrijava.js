@@ -9,12 +9,11 @@ $(document).on("submit", "form", function (event) {
 	event.preventDefault();
 	var prijavaJSON = JSON.stringify({
 		"username": $("#username").val(),
-		"password": $("#password").val(),
-		"aktivan": true // Kada se prijavi, korisnik je aktivan
-		// Ovo aktivan ce se menjati
+		"password": $("#password").val()
+		// Ovde se ne menja aktivnost
 	});
 
-	// setItem prima key/value parametre, ako ih nema pravi ih
+	// setItem prima key/value parametre, ako ih nema pravi ih, i ako ih ima, overwrite-uje
 	localStorage.setItem("user", $("#username").val());
 	console.log(localStorage); // Za debug
 

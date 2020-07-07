@@ -24,7 +24,7 @@ public class MenadzerController {
 	
 	@GetMapping(value="/{id}", produces=MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Menadzer> getMenadzer(@PathVariable(name="id") Long id){
-		Menadzer temp = this.menadzerService.findOne(id);
+		Menadzer temp = this.menadzerService.findOneById(id);
 		temp.setPassword("NEMATE PRISTUP SIFRI");
 		return new ResponseEntity<>(temp, HttpStatus.OK);
 	}
@@ -34,7 +34,7 @@ public class MenadzerController {
         List<Menadzer> nadjenaLista = this.menadzerService.findAll();
         List<MenadzerDTO> novaLista = new ArrayList<>();
         for (Menadzer g : nadjenaLista) {
-        	MenadzerDTO tempMenadzerDTO = new MenadzerDTO(g.getIdMenadzer(), g.getIme(), g.getPrezime(), g.getUloga());
+        	MenadzerDTO tempMenadzerDTO = new MenadzerDTO(g.getIdMenadzer(), g.getIme(), g.getPrezime(), g.getUloga(), g.getAktivan());
         	novaLista.add(tempMenadzerDTO);
         }
         return new ResponseEntity<>(novaLista, HttpStatus.OK);
@@ -42,11 +42,21 @@ public class MenadzerController {
 	
 	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<MenadzerDTO> napraviMenadzera(@RequestBody Menadzer dobijeni) throws Exception {
-		Menadzer zaUBazu = menadzerService.napravi(dobijeni); 
+		// Provera da li vec postoji korisnik sa tim username-om
+		Menadzer tester = menadzerService.findOneByUsername(dobijeni.getUsername());
+		if(tester != null) { // Odnosno ako ga nadje
+			// Print za getUsername kojeg nema ce baciti null pointer exception (ustvari bilo koja operacija sa tester, jer je on null)
+			throw new Exception("Menadzer sa tim username-om vec postoji!");
+		}
+		// Za id i za upisivanje u bazu (dobijeni je ceo pun objekat iz AJAX-a, samo bez id-a)
+		// zaUBazu je isto nepotreban
+		Menadzer zaUBazu = menadzerService.napravi(dobijeni);
+		// Vracamo dto od njega kao povratnu vrednost (da dto ima id), ali zasto? Nema potrebe, ne koristi se nigde?
 		MenadzerDTO nepotrebniDTO = new MenadzerDTO(zaUBazu.getIdMenadzer(), 
 													zaUBazu.getIme(), 
 													zaUBazu.getPrezime(), 
-													zaUBazu.getUloga());
+													zaUBazu.getUloga(),
+													zaUBazu.getAktivan());
 		return new ResponseEntity<>(nepotrebniDTO, HttpStatus.OK);
 	}
 }

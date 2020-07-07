@@ -1,9 +1,9 @@
 /* Imena kolona citaj iz H2 */
 
-INSERT INTO ADMINISTRATOR (username, password, ime, prezime, telefon, email, dob, uloga, aktivan) VALUES ('djordje00','teskasifra','Djordje','Stankovic','+38165808808','djordjestankovic@gmail.com','2000-05-01','administrator', FALSE);
-INSERT INTO GLEDALAC (username, password, ime, prezime, telefon, email, dob, uloga, aktivan) VALUES ('marko_','mnogoteskasifra','Marko','Markovic','+3816512313','markom@gmail.com','1999-08-29','gledalac', FALSE);
-INSERT INTO GLEDALAC (username, password, ime, prezime, telefon, email, dob, uloga, aktivan) VALUES ('ficko','najtezasifra','Filip','Filipovic','+38113452313','filip@gmail.com','1998-02-13','gledalac', FALSE);
-INSERT INTO MENADZER (username, password, ime, prezime, telefon, email, dob, uloga, aktivan) VALUES ('bobo','malotezasifra','Boban','Gavrilovic','+3816321312','bobang@gmail.com','2000-02-29','menadzer', FALSE);
+INSERT INTO ADMINISTRATOR (username, password, ime, prezime, telefon, email, dob, uloga, aktivan) VALUES ('djordje00','teskasifra','Djordje','Stankovic','+38165808808','djordjestankovic@gmail.com','2000-05-01','administrator', TRUE);
+INSERT INTO GLEDALAC (username, password, ime, prezime, telefon, email, dob, uloga, aktivan) VALUES ('marko_','mnogoteskasifra','Marko','Markovic','+3816512313','markom@gmail.com','1999-08-29','gledalac', TRUE);
+INSERT INTO GLEDALAC (username, password, ime, prezime, telefon, email, dob, uloga, aktivan) VALUES ('ficko','najtezasifra','Filip','Filipovic','+38113452313','filip@gmail.com','1998-02-13','gledalac', TRUE);
+INSERT INTO MENADZER (username, password, ime, prezime, telefon, email, dob, uloga, aktivan) VALUES ('bobo','malotezasifra','Boban','Gavrilovic','+3816321312','bobang@gmail.com','2000-02-29','menadzer', TRUE);
 INSERT INTO MENADZER (username, password, ime, prezime, telefon, email, dob, uloga, aktivan) VALUES ('gogo','jostezasifra','Gogan','Bavrilovic','+3811322222','goganb@gmail.com','1059-01-01','menadzer', FALSE);
 
 INSERT INTO BIOSKOP (naziv, adresa, broj_telefona_centrale, email, menadzer_bioskopa_id_menadzer) VALUES ('Bioskop Krusevac', 'Kajmakcalanska 01, Krusevac', '037 111-222', 'bioskopkrusevac@gmail.com', 1);

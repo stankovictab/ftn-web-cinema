@@ -8,7 +8,9 @@ public interface AdministratorService {
 	
 	Administrator napravi(Administrator admin) throws Exception; // Moze da baci exception ako ne moze da ga napravi (ako je prosledjen ID nesto drugo od null)
 	
-	Administrator findOne(Long id);
+	Administrator findOneById(Long id);
+	
+	Administrator findOneByUsername(String username);
 	
 	List<Administrator> findAll();
 
