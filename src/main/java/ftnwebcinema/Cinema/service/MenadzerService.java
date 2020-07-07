@@ -12,7 +12,7 @@ public interface MenadzerService {
 	
 	List<Menadzer> findAll();
 
-	Menadzer update(Menadzer menadzer) throws Exception; // Moze da baci exception ako ne moze da ga updatuje (ako on ne postoji)
+	Menadzer updateAktivnost(Menadzer menadzer) throws Exception; // Moze da baci exception ako ne moze da ga updatuje (ako on ne postoji)
 
     void delete(Long id);
 

@@ -43,8 +43,15 @@ public class GledalacServiceImplementacija implements GledalacService {
 		@Override
 		public Gledalac updateAktivnost(Gledalac gledalac) throws Exception {
 			Gledalac nadjen = this.gledalacRepo.findByUsername(gledalac.getUsername()); // Ja trazio po id pa bacalo exception
-			if(nadjen.getUsername() == null) {
+			// nadjen.getUsername() baca null pointer exception, pa ne moze da se poredi sa null, ali samo nadjen == null hoce
+			if(nadjen == null) {  // Ova provera je dobra, izbaca dobar exception
 				throw new Exception("Gledalac ne moze da se update-uje jer ne postoji.");
+			}
+			// Provera sifre
+			if(!(nadjen.getPassword().equals(gledalac.getPassword()))) { 
+				// Ne moze == jer on poredi reference
+				// Da nisu iste sifre -> !
+				throw new Exception("Sifra se ne poklapa!");
 			}
 	        // Postavljanje nove vrednosti
 	        nadjen.setAktivan(true);

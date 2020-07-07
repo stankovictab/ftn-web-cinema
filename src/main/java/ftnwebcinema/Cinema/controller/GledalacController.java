@@ -78,22 +78,4 @@ public class GledalacController {
 		return new ResponseEntity<>(nepotrebniDTO, HttpStatus.OK);
 	}
 	
-	// Metoda za prijavu na sistem
-	// Dobija od AJAX-a JSON sa username, password, i aktivan za tog korisnika postavljen na true u bazi
-	// Treba da gleda da li taj korisnik postoji, ako ne, izbaci alert za gresku
-	// Rade i path i value za mapiranje na /prijava
-	@PostMapping(value="/prijava", consumes = MediaType.APPLICATION_JSON_VALUE)
-	public boolean prijavi(@RequestBody Gledalac gledalac) { // Ne DTO jer nema username
-		System.out.println("usao");
-		try {
-			Gledalac gogi = gledalacService.updateAktivnost(gledalac);
-			System.out.println(gogi.getAktivan()); // Za test, ne mora da pravi novog Gledaoca
-			return true; // Prolazi i ulazi u success deo AJAX-a
-		} catch (Exception e) {
-			e.printStackTrace();
-			System.out.println("Greska! Gledalac ne postoji.");
-			return false; // Vrati false da bi se aktivirao error u AJAX-u
-		}
-	}
-	
 }

@@ -16,17 +16,17 @@
 	<!-- Font Awesome -->
 	<script src="https://kit.fontawesome.com/705b70177f.js" crossorigin="anonymous"></script>
 
-	<title>Tabela Filmova</title>
+	<title>Registracija Gledaoca</title>
 </head>
 
-<body>
+<body onload="fokusiraj()">
 
 	<!-- Header -->
 	<!-- Treba da bude 3-6-3 ili 4-4-4 po kolonama -->
 	<!-- Sve u red, uvek -->
 	<div id="ftn-web-cinema-header" class="row align-items-center" style="height:69px">
 		<div class="col-sm-4 text-center">
-			<h3 id="easteregg">Đorđe Stanković IN13-2018</h3>
+			<h3>Đorđe Stanković IN13-2018</h3>
 		</div>
 		<div class="col-sm-4 text-center">
 			<h1>ftn-web-cinema</h1>
@@ -44,13 +44,14 @@
 
 	<!-- ****************************** -->
 
-	<div id="tabela-naslov-red" class="row standard-header">
+	<!-- Forma -->
+	<div class="row standard-header">
 		<div class="col-md-4">
 		</div>
-		<div class="col-md-4 mt-5 mb-4">
-			<h1 id="tabela-naslov">Tabela Filmova</h1>
+		<div class="col-md-3 mt-5">
+			<h2>Registracija Gledaoca</h2>
 		</div>
-		<div class="col-md-4 mt-5 mb-4">
+		<div class="col-md-2 mt-5">
 			<a id="home-dugme" class="btn btn-outline-primary" onclick="history.back()">
 				<!-- Mora da se vrati nazad, ne na pocetni index.html -->
 				Nazad
@@ -60,81 +61,58 @@
 	</div>
 
 	<div class="row">
-		<div class="col-md-3"></div> <!-- Separator -->
+		<div class="col-md-4"></div> <!-- Separator -->
 
-		<div class="col-md-6">
-			<table id="tabela-filmova">
-				<!-- Dodaj id za AJAX, on ce puniti tabelu i dodati dugme, a i njemu omoguciti otvaranje profila -->
-				<thead>
-					<tr>
-						<td>ID</td>
-						<td>Naziv</td>
-						<td>Adresa</td>
-						<td>Vidi Jos</td>
-						<td>Brisanje</td>
-					</tr>
-				</thead>
-				<tr>
-				</tr>
-			</table>
+		<form id="dodavanje-korisnika-forma" name="forma" class="forma col-md-4 mt-3 border border-dark rounded-lg">
 
-		</div>
+			<label for="username">Username :</label>
+			<input id="username" type="text" name="username" class="form-control">
+			<label for="password">Password :</label>
+			<input id="password" type="password" name="password" class="form-control">
+			<label for="ime">Ime :</label>
+			<input id="ime" type="text" name="ime" class="form-control">
+			<label for="prezime">Prezime :</label>
+			<input id="prezime" type="text" name="prezime" class="form-control">
+			<label for="telefon">Telefon :</label>
+			<input id="telefon" type="text" name="telefon" class="form-control">
+			<label for="email">E-Mail :</label>
+			<input id="email" type="email" name="email" class="form-control">
+			<label for="dob">Datum Rodjenja :</label>
+			<input id="dob" type="date" name="dob" class="form-control">
+			<!-- Uloga nije vise dropdown -->
+			<!-- <label for="uloga">Uloga :</label>
+			<select id="uloga" class="form-control">
+				<option value=""> Izaberite Ulogu </option>
+				<option value="gledalac"> Gledalac </option>
+				<option value="menadzer"> Menadzer </option>
+				<option value="administrator"> Administrator </option>
+			</select> -->
 
-	</div>
+			<!-- Korisnik postaje aktivan cim se registruje ili prijavi -->
 
-	<!-- Profil -->
-
-	<div id="profil" hidden>
-		<!-- hidden je zato sto je to profil koji ce se otkriti pritiskom na dugme  -->
-		<div class="row standard-header">
-			<div class="col-md-4"></div> <!-- Separator -->
-			<div class="col-md-6 mt-5">
-				<img id="profilna-slika" src="film.jpg">
-			</div>
-		</div>
-
-		<div class="row standard-header">
-			<div class="col-md-4"></div>
-			<div class="col-md-6 mt-3">
-				<img src="">
-				<h1 id="nazivProfil"></h1> <!-- Puni AJAX -->
-				<h5 id="opisProfil"></h5> <!-- Puni AJAX -->
-				<h5 id="zanrProfil"></h5> <!-- Puni AJAX -->
-				<h5 id="trajanjeProfil"></h5> <!-- Puni AJAX -->
-				<h5 id="srednjaOcenaProfil"></h5> <!-- Puni AJAX -->
-			</div>
-		</div>
-
-		<div class="row mt-3">
-			<div class="col-md-4"></div> <!-- Separator -->
-
-			<div class="col-md-6">
-				<a id="home-dugme" class="btn btn-outline-primary" href="index.html">
-					Nazad
-					<i class="fas fa-home"></i>
-				</a>
+			<div style="text-align: center">
+				<button type="submit" id="posalji-dugme" class="btn btn-primary mt-3">
+					<i class=" fas fa-paper-plane mr-2"></i>
+					Pošalji
+				</button>
+				<!-- Mora da bude tipa submit da bi AJAX funkcija radila -->
 			</div>
 
-			<div class="col-md-4"></div>
+		</form>
 
-		</div>
 	</div>
 
 	<!-- ---------------------------------------------- -->
 
-	<div style="text-align: center">
-		<iframe width="100%" height="720" autoplay="true"></iframe>
-	</div>
 	<!-- JS na dno body-a da se poslednje ucita -->
 	<!-- jQuery ja dodao bolji, ne slim build jer on nema AJAX -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<!-- Moj JS, mora da bude posle jQuery-a -->
-	<script type="text/javascript" src="scriptTabele.js"></script>
+	<script type="text/javascript" src="scriptRegistracijaGledaoca.js"></script>
 	<!-- Bootstrap-ov JS -->
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
 		integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
 		crossorigin="anonymous"></script>
-
 </body>
 
 </html>

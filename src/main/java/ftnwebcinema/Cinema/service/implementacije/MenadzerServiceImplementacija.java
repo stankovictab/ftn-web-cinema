@@ -38,19 +38,25 @@ public class MenadzerServiceImplementacija implements MenadzerService {
 	        return lista;
 		}
 		
-		// Ova metoda menja samo ime korisnika
+		// Bila je njena metoda ali samo za update imena
 		@Override
-		public Menadzer update(Menadzer menadzer) throws Exception {
-			Menadzer neUpdatovan = this.menadzerRepo.getOne(menadzer.getIdMenadzer());
-	        if (neUpdatovan == null) {
-	            throw new Exception("Gledalac ne moze da se update-uje jer ne postoji.");
-	        }
-
-	        // Postavljanje novog imena
-	        neUpdatovan.setIme(menadzer.getIme());
-
-	        // Cuvanje u bazi
-	        Menadzer updatovan = this.menadzerRepo.save(neUpdatovan);
+		public Menadzer updateAktivnost(Menadzer menadzer) throws Exception {
+			Menadzer nadjen = this.menadzerRepo.findByUsername(menadzer.getUsername()); // Ja trazio po id pa bacalo exception
+			// nadjen.getUsername() baca null pointer exception, pa ne moze da se poredi sa null, ali samo nadjen == null hoce
+			if(nadjen == null) {  // Ova provera je dobra, izbaca dobar exception
+				throw new Exception("Menadzer ne moze da se update-uje jer ne postoji.");
+			}
+			// Provera sifre
+			if(!(nadjen.getPassword().equals(menadzer.getPassword()))) { 
+				// Ne moze == jer on poredi reference
+				// Da nisu iste sifre -> !
+				throw new Exception("Sifra se ne poklapa!");
+			}
+	        // Postavljanje nove vrednosti
+	        nadjen.setAktivan(true);
+	        // Cuvanje u bazi, ne mora da napravi novog lika, ali je to tu zbog debug-a u kontroleru (gogi)
+	        Menadzer updatovan = this.menadzerRepo.save(nadjen);
+	        System.out.println("Korisnik prijavljen, Aktivan postavljen na true"); // Za debug
 	        return updatovan;
 		}
 		

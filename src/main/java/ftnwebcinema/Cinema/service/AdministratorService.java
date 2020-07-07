@@ -12,7 +12,7 @@ public interface AdministratorService {
 	
 	List<Administrator> findAll();
 
-	Administrator update(Administrator admin) throws Exception; // Moze da baci exception ako ne moze da ga updatuje (ako on ne postoji)
+	Administrator updateAktivnost(Administrator admin) throws Exception; // Moze da baci exception ako ne moze da ga updatuje (ako on ne postoji)
 
     void delete(Long id);
 

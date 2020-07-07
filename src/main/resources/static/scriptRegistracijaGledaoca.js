@@ -20,13 +20,14 @@ $(document).on("submit", "form", function (event) {
 		"telefon": $("#telefon").val(),
 		"email": $("#email").val(),
 		"dob": $("#dob").val(),
-		"uloga": $("#uloga").val(),
+		"uloga": "gledalac", // Bilo je "uloga": $("#uloga").val(),
 		"aktivan": true // Korisnik je aktivan kada napravi nalog, ne mora posle toga da se prijavi da bi taj bool promenio
+		// Ovo aktivan ce se menjati
 	});
 
 	$.ajax({
 		type: "POST", // HTTP metoda je POST jer saljemo informacije serveru
-		url: "http://localhost:8080/" + $("#uloga").val(), // Gadjamo na korektan url
+		url: "http://localhost:8080/gledalac", // Gadjamo na korektan url, bilo je + $("#uloga").val()
 		dataType: "json", // Povratna vrednost
 		contentType: "application/json", // Podaci koje saljemo
 		data: mojJSON, // Saljemo objekat koji smo napravili, on je taj data JSON

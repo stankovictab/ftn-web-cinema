@@ -53,7 +53,7 @@ body{
 }
 
 #homepage-dugme:hover{
-	background-color: #333;
+	background-color: #333 !important;
 	color: #ddd !important;
 	transition: 0.4s ease;
 }

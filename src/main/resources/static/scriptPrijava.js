@@ -11,20 +11,30 @@ $(document).on("submit", "form", function (event) {
 		"username": $("#username").val(),
 		"password": $("#password").val(),
 		"aktivan": true // Kada se prijavi, korisnik je aktivan
+		// Ovo aktivan ce se menjati
 	});
+
+	// setItem prima key/value parametre, ako ih nema pravi ih
+	localStorage.setItem("user", $("#username").val());
+	console.log(localStorage); // Za debug
 
 	$.ajax({
 		type: "POST", // HTTP metoda je POST jer saljemo informacije serveru
-		url: "http://localhost:8080/gledalac/prijava", // Gadja specificni url za metodu kontrolera
-		dataType: "json", // Povratna vrednost
+		url: "http://localhost:8080/prijava", // Gadja specificni url za metodu kontrolera
+		dataType: "text", // Tip povratne vrednosti iz kontrolera, promenio sa json na text jer vracam string zbog redirekcije
 		contentType: "application/json", // Podaci koje saljemo
-		data: prijavaJSON, // Saljemo objekat koji smo napravili, on je taj data JSON
-		success: function () {
+		data: prijavaJSON, // Saljemo objekat koji smo napravili, on je taj data JSON (ovo nije ono sto dobijamo od kontrolera, tako pise i u dokumentaciji ajax-a)
+		success: function (data) {
+			// Ovo data je povratna vrednost iz metode kontrolera (iako je ona rekla da je to objekat koji saljemo?)
+			// pa odatle mozemo da kazemo gde hocemo da redirectujemo
+			console.log("data iz success je ", data);
 			alert("Prijavljeni ste!");
-			window.location.href = "index.html"; // Redirect
+			window.location.href = "index-" + data + ".html"; // Redirect
 		},
 		error: function (data) {
+			console.log("data iz error je ", data);
 			alert("Korisnik sa tim podacima ne postoji.");
+			// Ne radi redirect nego ostaje na stranici dok se ne unesu dobri podaci
 		}
 	});
 });

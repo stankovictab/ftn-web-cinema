@@ -38,19 +38,25 @@ public class AdministratorServiceImplementacija implements AdministratorService 
 	        return lista;
 		}
 		
-		// Ova metoda menja samo ime korisnika
+		// Bila je njena metoda ali samo za update imena
 		@Override
-		public Administrator update(Administrator admin) throws Exception {
-			Administrator neUpdatovan = this.administratorRepo.getOne(admin.getIdAdministrator());
-	        if (neUpdatovan == null) {
-	            throw new Exception("Administrator ne moze da se update-uje jer ne postoji.");
-	        }
-
-	        // Postavljanje novog imena
-	        neUpdatovan.setIme(admin.getIme());
-
-	        // Cuvanje u bazi
-	        Administrator updatovan = this.administratorRepo.save(neUpdatovan);
+		public Administrator updateAktivnost(Administrator administrator) throws Exception {
+			Administrator nadjen = this.administratorRepo.findByUsername(administrator.getUsername()); // Ja trazio po id pa bacalo exception
+			// nadjen.getUsername() baca null pointer exception, pa ne moze da se poredi sa null, ali samo nadjen == null hoce
+			if(nadjen == null) {  // Ova provera je dobra, izbaca dobar exception
+				throw new Exception("Administrator ne moze da se update-uje jer ne postoji.");
+			}
+			// Provera sifre
+			if(!(nadjen.getPassword().equals(administrator.getPassword()))) { 
+				// Ne moze == jer on poredi reference
+				// Da nisu iste sifre -> !
+				throw new Exception("Sifra se ne poklapa!");
+			}
+	        // Postavljanje nove vrednosti
+	        nadjen.setAktivan(true);
+	        // Cuvanje u bazi, ne mora da napravi novog lika, ali je to tu zbog debug-a u kontroleru (gogi)
+	        Administrator updatovan = this.administratorRepo.save(nadjen);
+	        System.out.println("Korisnik prijavljen, Aktivan postavljen na true"); // Za debug
 	        return updatovan;
 		}
 		
