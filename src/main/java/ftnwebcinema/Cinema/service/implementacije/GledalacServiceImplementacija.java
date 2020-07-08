@@ -46,6 +46,7 @@ public class GledalacServiceImplementacija implements GledalacService {
 		}
 
 		// Bila je njena metoda ali samo za update imena
+		// Ovo se koristi sada samo u tabeli za aktivaciju menadzera kod admina
 		@Override
 		public Gledalac updateAktivnost(Gledalac gledalac) throws Exception {
 			Gledalac nadjen = this.gledalacRepo.findByUsername(gledalac.getUsername()); // Ja trazio po id pa bacalo exception
@@ -53,15 +54,9 @@ public class GledalacServiceImplementacija implements GledalacService {
 			if(nadjen == null) {  // Ova provera je dobra, izbaca dobar exception
 				throw new Exception("Gledalac ne moze da se update-uje jer ne postoji.");
 			}
-			// Provera sifre
-			if(!(nadjen.getPassword().equals(gledalac.getPassword()))) { 
-				// Ne moze == jer on poredi reference
-				// Da nisu iste sifre -> !
-				throw new Exception("Sifra se ne poklapa!");
-			}
 	        // Postavljanje nove vrednosti
 	        nadjen.setAktivan(true);
-	        // Cuvanje u bazi, ne mora da napravi novog lika, ali je to tu zbog debug-a u kontroleru (gogi)
+	        // Cuvanje u bazi, ne mora da napravi novog lika, bilo za debug, ali ne skodi
 	        Gledalac updatovan = this.gledalacRepo.save(nadjen);
 	        System.out.println("Korisnik prijavljen, Aktivan postavljen na true"); // Za debug
 	        return updatovan;

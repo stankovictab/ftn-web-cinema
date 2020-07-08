@@ -32,7 +32,7 @@ $(document).on("submit", "form", function (event) {
 		},
 		error: function (data) {
 			console.log("data iz error je ", data);
-			alert("Korisnik sa tim podacima ne postoji.");
+			alert("Korisnik sa tim podacima ili ne postoji, \nili nije aktiviran od strane administratora.\nVise informacija u Spring konzoli.");
 			// Ne radi redirect nego ostaje na stranici dok se ne unesu dobri podaci
 		}
 	});

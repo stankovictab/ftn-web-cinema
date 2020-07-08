@@ -59,4 +59,32 @@ public class MenadzerController {
 													zaUBazu.getAktivan());
 		return new ResponseEntity<>(nepotrebniDTO, HttpStatus.OK);
 	}
+	
+	// Nije @PostMapping jer on zahteva JSON, a mi nista ne saljemo\
+	// Moze i da ne vraca nista? Pa moze i da bude void?
+	// Ako se obrise consumes, onda mozda ne mora da se stavlja contentType
+	@GetMapping(value = "/aktivacija/{id}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<MenadzerDTO> aktivacijaMenadzera(@PathVariable(name="id") Long id) throws Exception {
+		// id dobijamo iz id-a dugmeta koji je pritisnut u tabeli aktivacije menadzera kod admina
+		Menadzer dobijeni = this.menadzerService.findOneById(id); // Nece bacati exception jer sigurno postoji, cim je u tabeli
+		this.menadzerService.updateAktivnost(dobijeni);
+		
+		MenadzerDTO nepotrebniDTO = new MenadzerDTO(dobijeni.getIdMenadzer(), 
+													dobijeni.getIme(), 
+													dobijeni.getPrezime(), 
+													dobijeni.getUloga(),
+													dobijeni.getAktivan());
+		return new ResponseEntity<>(nepotrebniDTO, HttpStatus.OK);
+	}
+	
+	@GetMapping(value = "/brisanje/{id}")
+	public void brisanjeMenadzera(@PathVariable(name="id") Long id) throws Exception {
+		System.out.println(id);
+		
+		Menadzer dobijeni = this.menadzerService.findOneById(id);
+		System.out.println(dobijeni);
+		
+		// id dobijamo iz id-a dugmeta koji je pritisnut u tabeli aktivacije menadzera kod admina
+		this.menadzerService.delete(id); // Nece bacati exception jer sigurno postoji, cim je u tabeli
+	}
 }

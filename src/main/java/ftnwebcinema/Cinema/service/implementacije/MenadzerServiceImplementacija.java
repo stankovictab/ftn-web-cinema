@@ -52,12 +52,6 @@ public class MenadzerServiceImplementacija implements MenadzerService {
 			if(nadjen == null) {  // Ova provera je dobra, izbaca dobar exception
 				throw new Exception("Menadzer ne moze da se update-uje jer ne postoji.");
 			}
-			// Provera sifre
-			if(!(nadjen.getPassword().equals(menadzer.getPassword()))) { 
-				// Ne moze == jer on poredi reference
-				// Da nisu iste sifre -> !
-				throw new Exception("Sifra se ne poklapa!");
-			}
 	        // Postavljanje nove vrednosti
 	        nadjen.setAktivan(true);
 	        // Cuvanje u bazi, ne mora da napravi novog lika, ali je to tu zbog debug-a u kontroleru (gogi)
