@@ -63,7 +63,7 @@
 	<div class="row">
 		<div class="col-md-4"></div> <!-- Separator -->
 
-		<form name="forma" class="forma col-md-4 mt-3 border border-dark rounded-lg">
+		<form name="forma-dodavanje" class="forma col-md-4 mt-3 border border-dark rounded-lg">
 
 			<label for="naziv">Naziv :</label>
 			<input id="naziv" type="text" name="naziv" class="form-control" required>
@@ -76,14 +76,8 @@
 			<label for="brojsala">Broj Sala :</label>
 			<input id="brojsala" type="number" name="brojsala" class="form-control" required>
 
-			<label for="menadzer-dropdown">Menadžer :</label>
-			<select id="menadzer-dropdown" class="form-control">
-				<option value=""> Izaberite Menadžera </option>
-				<option value=""> Ovo je za trecu tacku </option>
-				<option value=""> Dobice listu menadzera iz AJAX-a, </option>
-				<option value=""> pa ce napuniti ove opcije, </option>
-				<option value=""> i promeniti value atribut </option>
-			</select>
+			<label for="menadzerUsername">Username Menadžera za Bioskop :</label>
+			<input id="menadzerUsername" type="text" name="menadzerUsername" class="form-control">
 
 			<div style="text-align: center; margin-top: 10px">
 				<button type="submit" id="posalji-dugme" class="btn btn-primary mt-3">

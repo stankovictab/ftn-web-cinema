@@ -32,6 +32,10 @@ public class Bioskop implements Serializable{
 	// Jedan menadzer za jedan bioskop, jedina OneToOne veza
 	// Ovde je kolona zbog mappedBy
 	
+	// Pomocni String koji pomaze u pravljenju bioskopa
+	// Nije kolona
+	private String menadzerUsername;
+	
 	@OneToMany(mappedBy = "bioskop")
 	private Set<Sala> listaSala = new HashSet<>();
 	// Svaki bioskop ima vise sala, svaka sala je samo za jedan bioskop
@@ -85,13 +89,21 @@ public class Bioskop implements Serializable{
 		this.email = email;
 	}
 	
+	public String getMenadzerUsername() {
+		return menadzerUsername;
+	}
+
+	public void setMenadzerUsername(String menadzerUsername) {
+		this.menadzerUsername = menadzerUsername;
+	}
+	
 	public Bioskop(){}
 
-	public Bioskop(String naziv, String adresa, String brojTelefonaCentrale, String email) {
+	public Bioskop(String naziv, String adresa, String brojTelefonaCentrale, String email, String menadzerUsername) {
 		this.naziv = naziv;
 		this.adresa = adresa;
 		this.brojTelefonaCentrale = brojTelefonaCentrale;
 		this.email = email;
+		this.menadzerUsername = menadzerUsername;
 	}
-	
 }

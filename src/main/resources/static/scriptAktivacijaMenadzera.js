@@ -3,9 +3,12 @@ function aktiviraj() {
 		$.ajax({
 			type: "GET",
 			url: "http://localhost:8080/menadzer/aktivacija/" + this.id, // this.id je id dugmeta koji se postavlja pri punjenju tabele
-			contentType: "application/json", // Mora da se stavi jer ako nema ovoga baca 415 (jer metoda ima consumes)
-			// Ne treba nam data
-			success: function () { // Ne prima data, mada moze? Onaj dto i http status ok par iz metode?
+			// Ne trebaju nam ni contentType ni dataType ni data jer nista ni ne saljemo ni ne trazimo od servera
+			// Sve informacije dobija iz this.id koji je u url-u
+			// Tako da metoda u kontroleru nema ni consumes ni produces
+			// Nije potreban cak ni onaj Html status OK
+			// Odatle ni ove funkcije ne primaju data
+			success: function () {
 				alert("Uspesna aktivacija!\nStranica ce se ponovo ucitati.");
 				location.reload();
 			},
@@ -18,14 +21,16 @@ function aktiviraj() {
 
 function izbrisi() {
 	$("#tabela-menadzera").on('click', '.dugmeIzbrisi', function () {
-		console.log(this.id);
-
+		console.log("Brise se id=", this.id);
 		$.ajax({
 			type: "GET",
 			url: "http://localhost:8080/menadzer/brisanje/" + this.id, // this.id je id dugmeta koji se postavlja pri punjenju tabele
-			// contentType: "application/json", // Mora da se stavi jer ako nema ovoga baca 415
-			// Ne treba nam data
-			success: function () { // Ne prima data, mada moze? Onaj dto i http status ok par iz metode?
+			// Ne trebaju nam ni contentType ni dataType ni data jer nista ni ne saljemo ni ne trazimo od servera
+			// Sve informacije dobija iz this.id koji je u url-u
+			// Tako da metoda u kontroleru nema ni consumes ni produces
+			// Nije potreban cak ni onaj Html status OK
+			// Odatle ni ove funkcije ne primaju data
+			success: function () {
 				alert("Uspesno brisanje!");
 				location.reload();
 			},
@@ -42,6 +47,8 @@ $("#tabela-menadzera").ready(function () {
 		type: "GET", // Dobija informacije od servera u obliku JSON-a
 		url: "http://localhost:8080/menadzer", // URL Kontrolera
 		dataType: "json", // Povratna vrednost
+		// contentType i data je ono sto saljemo, a nista ne saljemo, pa ni ne pisemo
+		// ovo gadja metodu getMenadzeri koja ima produces jer pravi JSON (dataType ovde)
 		success: function (data) { // data je JSON iz kontrolera (ResponseEntity), odnosno lista DTO-ova, pa kroz nju moze da se iterira
 			console.log("SUCCESS : ", data); // Ispisuje celu listu u konzolu
 			for (i = 0; i < data.length; i++) {

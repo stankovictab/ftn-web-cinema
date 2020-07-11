@@ -60,10 +60,10 @@ public class MenadzerController {
 		return new ResponseEntity<>(nepotrebniDTO, HttpStatus.OK);
 	}
 	
-	// Nije @PostMapping jer on zahteva JSON, a mi nista ne saljemo\
-	// Moze i da ne vraca nista? Pa moze i da bude void?
-	// Ako se obrise consumes, onda mozda ne mora da se stavlja contentType
-	@GetMapping(value = "/aktivacija/{id}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	// Nije @PostMapping jer on zahteva JSON, a mi nista ne saljemo
+	// Moze i da ne vraca nista, pa moze da bude void.
+	// consumes i produces nema jer nista ne zahteva od AJAX-a i nista mu ne salje (iako to ovde tako izgleda, nista se ipak nece poslati)
+	@GetMapping(value = "/aktivacija/{id}")
 	public ResponseEntity<MenadzerDTO> aktivacijaMenadzera(@PathVariable(name="id") Long id) throws Exception {
 		// id dobijamo iz id-a dugmeta koji je pritisnut u tabeli aktivacije menadzera kod admina
 		Menadzer dobijeni = this.menadzerService.findOneById(id); // Nece bacati exception jer sigurno postoji, cim je u tabeli
@@ -79,12 +79,7 @@ public class MenadzerController {
 	
 	@GetMapping(value = "/brisanje/{id}")
 	public void brisanjeMenadzera(@PathVariable(name="id") Long id) throws Exception {
-		System.out.println(id);
-		
-		Menadzer dobijeni = this.menadzerService.findOneById(id);
-		System.out.println(dobijeni);
-		
 		// id dobijamo iz id-a dugmeta koji je pritisnut u tabeli aktivacije menadzera kod admina
-		this.menadzerService.delete(id); // Nece bacati exception jer sigurno postoji, cim je u tabeli
+		this.menadzerService.delete(id); // Bacice exception ako je menadzer vec u vezi sa nekim bioskopom, pa ne moze da se obrise
 	}
 }
