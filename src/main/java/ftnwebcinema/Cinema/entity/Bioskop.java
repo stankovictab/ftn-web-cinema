@@ -18,6 +18,10 @@ public class Bioskop implements Serializable{
 	@Column
 	private String naziv;
 	
+	// Pomocan stari naziv za izmenu bioskopa
+	// Nije kolona (ali se opet pojavljuje)
+	private String stariNaziv;
+	
 	@Column
 	private String adresa;
 	
@@ -97,6 +101,14 @@ public class Bioskop implements Serializable{
 		this.menadzerUsername = menadzerUsername;
 	}
 	
+	public String getStariNaziv() {
+		return stariNaziv;
+	}
+
+	public void setStariNaziv(String stariNaziv) {
+		this.stariNaziv = stariNaziv;
+	}
+	
 	public Bioskop(){}
 
 	public Bioskop(String naziv, String adresa, String brojTelefonaCentrale, String email, String menadzerUsername) {
@@ -104,6 +116,7 @@ public class Bioskop implements Serializable{
 		this.adresa = adresa;
 		this.brojTelefonaCentrale = brojTelefonaCentrale;
 		this.email = email;
-		this.menadzerUsername = menadzerUsername;
+		this.menadzerUsername = menadzerUsername; // Mislim da treba i ovo
 	}
+
 }

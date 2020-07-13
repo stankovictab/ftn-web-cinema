@@ -10,9 +10,11 @@ public interface BioskopService {
 	
 	Bioskop findOne(Long id);
 	
+	Bioskop findByNaziv(String naziv);
+	
 	List<Bioskop> findAll();
 
-	Bioskop update(Bioskop bioskop) throws Exception; 
+	Bioskop updateNaziv(Bioskop bioskop, String noviNaziv) throws Exception; 
 
     void delete(Long id);
 }

@@ -17,4 +17,6 @@ public interface BioskopRepo extends JpaRepository<Bioskop, Long> {
 	// Bioskop je case sensitive, parametri se dodaju sa :, ne stavlja se B.
 	void updateMenadzerovID (@Param("idMenadzer") Long idMenadzer, @Param("idBioskop") Long idBioskop);
 	
+	Bioskop findByNaziv(String naziv);
+	
 }

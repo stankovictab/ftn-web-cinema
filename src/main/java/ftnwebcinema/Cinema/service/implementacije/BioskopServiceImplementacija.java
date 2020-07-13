@@ -16,7 +16,6 @@ public class BioskopServiceImplementacija implements BioskopService{
 	@Autowired 
 	private BioskopRepo bioskopRepo;
 	
-	
 	@Override
 	public Bioskop napravi(Bioskop bioskop, Long idMenadzer) throws Exception {
 		if (bioskop.getIdBioskop() != null) {
@@ -36,6 +35,12 @@ public class BioskopServiceImplementacija implements BioskopService{
 		Bioskop nadjeni = this.bioskopRepo.getOne(id); 
         return nadjeni;
 	}
+	
+	@Override
+	public Bioskop findByNaziv(String naziv) {
+		Bioskop nadjeni = this.bioskopRepo.findByNaziv(naziv); 
+        return nadjeni;
+	}
 
 	@Override
 	public List<Bioskop> findAll() {
@@ -44,14 +49,14 @@ public class BioskopServiceImplementacija implements BioskopService{
 	}
 
 	@Override
-	public Bioskop update(Bioskop bioskop) throws Exception {
+	public Bioskop updateNaziv(Bioskop bioskop, String noviNaziv) throws Exception {
 		Bioskop neUpdatovan = this.bioskopRepo.getOne(bioskop.getIdBioskop());
         if (neUpdatovan == null) {
             throw new Exception("Bioskop ne moze da se update-uje jer ne postoji.");
         }
 
         // Postavljanje novog imena
-        neUpdatovan.setNaziv(bioskop.getNaziv());
+        neUpdatovan.setNaziv(noviNaziv);
 
         // Cuvanje u bazi
         Bioskop updatovan = this.bioskopRepo.save(neUpdatovan);

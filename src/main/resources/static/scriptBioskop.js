@@ -26,7 +26,7 @@ $(document).on("submit", "form", function (event) {
 			window.location.href = "index-administrator.html"; // Redirect
 		},
 		error: function (data) {
-			alert("Greska u pravljenju bioskopa.");
+			alert("Greska u pravljenju bioskopa.\nIli menadzer '" + $("#menadzerUsername").val() + "' ne postoji,\nili vec postoji bioskop sa tim nazivom.\nVidi Spring konzolu za vise detalja.");
 			console.log("ERROR: ", data);
 		}
 	});

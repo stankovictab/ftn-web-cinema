@@ -34,4 +34,36 @@ public class Sala implements Serializable{
 	// Sala moze da ima vise projekcija i svaka projekcija moze da bude u vise razlicitih sala razlicitih bioskopa
 	// Ime tabele je SALINE_PROJEKCIJE
 	
+	public Long getIdSala() {
+		return idSala;
+	}
+
+	public void setIdSala(Long idSala) {
+		this.idSala = idSala;
+	}
+
+	public int getKapacitet() {
+		return kapacitet;
+	}
+
+	public void setKapacitet(int kapacitet) {
+		this.kapacitet = kapacitet;
+	}
+
+	public String getOznakaSale() {
+		return oznakaSale;
+	}
+
+	public void setOznakaSale(String oznakaSale) {
+		this.oznakaSale = oznakaSale;
+	}
+
+	public Bioskop getBioskop() {
+		return bioskop;
+	}
+
+	public void setBioskop(Bioskop bioskop) {
+		this.bioskop = bioskop;
+	}
+	
 }

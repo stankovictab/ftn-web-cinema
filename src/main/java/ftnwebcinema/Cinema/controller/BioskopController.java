@@ -17,6 +17,7 @@ import ftnwebcinema.Cinema.entity.Menadzer;
 import ftnwebcinema.Cinema.entity.dto.BioskopDTO;
 import ftnwebcinema.Cinema.service.BioskopService;
 import ftnwebcinema.Cinema.service.MenadzerService;
+import ftnwebcinema.Cinema.service.SalaService;
 
 @RestController
 @RequestMapping(value = "/bioskop") 
@@ -26,6 +27,8 @@ public class BioskopController {
 	private BioskopService bioskopService;
 	@Autowired 
 	private MenadzerService menadzerService;
+	@Autowired 
+	private SalaService salaService;
 	
 	@GetMapping(value="/{id}", produces=MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Bioskop> getBioskop(@PathVariable(name="id") Long id){
@@ -46,12 +49,27 @@ public class BioskopController {
 	
 	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<BioskopDTO> napraviBioskop(@RequestBody Bioskop dobijeni) throws Exception {
+		
+		// Provera naziva Bioskop-a, da li vec postoji jedan pod tim nazivom
+		List<Bioskop> lista = this.bioskopService.findAll();
+		for(Bioskop b : lista) {
+			// System.out.println("Nasao " + b.getNaziv());
+			if(b.getNaziv().equals(dobijeni.getNaziv())) { // equals, ne ==
+				throw new Exception("Bioskop sa tim nazivom vec postoji.");
+			}
+		}
+		
 		// Treba posebna provera za menadzer-polje
 		String user = dobijeni.getMenadzerUsername();
 //		System.out.println(user); // Nadje
 		// Moramo da mu nadjemo id, pa moramo da uvedemo menadzerService
 		Menadzer nadjen = menadzerService.findOneByUsername(user);
-		Long idMenadzer = nadjen.getIdMenadzer(); // Nadje ga
+		
+		// Nadje ga, ako postoji menadzer sa tim username-om, ako ne baci null pointer exception
+		if(nadjen == null) { // Ne nadjen.getIdMenadzer == null
+			throw new Exception("Menadzer sa tim username-om ne postoji.");
+		}
+		Long idMenadzer = nadjen.getIdMenadzer(); 
 		
 //		System.out.println(idMenadzer); // Nadje
 //		System.out.println(dobijeni.getIdBioskop()); // null jer ga nije ni napravio, tako treba
@@ -61,9 +79,50 @@ public class BioskopController {
 		return new ResponseEntity<>(nepotrebniDTO, HttpStatus.OK);
 	}
 	
-	@PostMapping(value="/update", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-	public String updateBioskop(@RequestBody String jsonceo) throws Exception {
-		System.out.println(jsonceo);
-		return "kita";
+	@PostMapping(value="/update", consumes = MediaType.APPLICATION_JSON_VALUE)
+	public void updateBioskop(@RequestBody Bioskop dobijeni) throws Exception {
+		// dobijeni ima samo dva polja
+		System.out.println(dobijeni.getStariNaziv()); // Vraca dobro prosledjen trazeni naziv
+		System.out.println(dobijeni.getNaziv());
+		String stari = dobijeni.getStariNaziv();
+		String novi = dobijeni.getNaziv();
+		
+		Bioskop nadjen = this.bioskopService.findByNaziv(stari);
+		
+		// Nadje ga ako postoji, ako ne postoji baca null pointer exception
+		if(nadjen == null) // Ne nadjen.getIdBioskop() == null
+			throw new Exception("Nije nadjen Bioskop sa tim imenom."); // Izacice iz metode i uci ce u error u AJAX-u
+		System.out.println(nadjen.getIdBioskop()); 
+		
+		this.bioskopService.updateNaziv(nadjen, novi);
+		
+		System.out.println(nadjen.getStariNaziv());
+		System.out.println(nadjen.getNaziv());
+		
+		return;
+	}
+	
+	@PostMapping(value="/brisanje", consumes = MediaType.APPLICATION_JSON_VALUE)
+	public void obrisiBioskop(@RequestBody Bioskop dobijeni) throws Exception {
+		// dobijeni ima samo jedno polje
+		System.out.println(dobijeni.getNaziv());
+		String naziv = dobijeni.getNaziv();
+		
+		Bioskop nadjen = this.bioskopService.findByNaziv(naziv);
+		
+		// Nadje ga ako postoji, ako ne postoji baca null pointer exception
+		if(nadjen.getIdBioskop() == null)
+			throw new Exception("Nije nadjen Bioskop sa tim imenom."); // Izacice iz metode i uci ce u error u AJAX-u
+		System.out.println(nadjen.getIdBioskop()); 
+		
+		// Brisanje bioskopa mora da pozove i brisanje sala
+		
+		this.salaService.delete(nadjen.getIdBioskop()); // Brisanje sala se odvija po id-u bioskopa
+		
+		this.bioskopService.delete(nadjen.getIdBioskop());
+
+		System.out.println(nadjen.getNaziv()); // Treba da vrati null
+		
+		return;
 	}
 }
