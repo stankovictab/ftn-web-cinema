@@ -6,7 +6,7 @@ import ftnwebcinema.Cinema.entity.Bioskop;
 
 public interface BioskopService {
 	
-	Bioskop napravi(Bioskop bioskop) throws Exception;
+	Bioskop napravi(Bioskop bioskop, Long idMenadzer) throws Exception;
 	
 	Bioskop findOne(Long id);
 	

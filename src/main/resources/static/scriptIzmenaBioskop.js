@@ -21,7 +21,7 @@ $(document).on("submit", "form", function (event) {
 			alert("???");
 			window.location.href = "index-administrator.html"; // Redirect
 
-			// if true uradio je ako nije ne, javi iz kontrolera
+			// if "true" uradio je ako nije ne, javi iz kontrolera
 		},
 		error: function (data) {
 			alert("Greska u pravljenju bioskopa.");

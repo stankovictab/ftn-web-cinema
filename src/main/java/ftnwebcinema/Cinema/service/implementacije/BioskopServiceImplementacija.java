@@ -1,6 +1,8 @@
 package ftnwebcinema.Cinema.service.implementacije;
 
 import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,12 +18,16 @@ public class BioskopServiceImplementacija implements BioskopService{
 	
 	
 	@Override
-	public Bioskop napravi(Bioskop bioskop) throws Exception {
+	public Bioskop napravi(Bioskop bioskop, Long idMenadzer) throws Exception {
 		if (bioskop.getIdBioskop() != null) {
             throw new Exception("ID bioskopa koji se pravi mora da bude null."); 
         }
-		Bioskop novi = this.bioskopRepo.save(bioskop); 
-		
+		this.bioskopRepo.save(bioskop); // Pravi id, pa ovo mora da bude ispod 
+		Long tempID = bioskop.getIdBioskop();
+		this.bioskopRepo.updateMenadzerovID(idMenadzer, tempID);
+		// Mora da ga nadje pa da ga vrati jer ne moze samo od save, nema id menadzera, ovako ce vratiti updatovanog
+		Optional<Bioskop> noviOptional = this.bioskopRepo.findById(tempID);
+		Bioskop novi = noviOptional.get(); // Ovako se resava Optional, get() vraca vrednost ako nije null
         return novi;
 	}
 

@@ -48,11 +48,15 @@ public class BioskopController {
 	public ResponseEntity<BioskopDTO> napraviBioskop(@RequestBody Bioskop dobijeni) throws Exception {
 		// Treba posebna provera za menadzer-polje
 		String user = dobijeni.getMenadzerUsername();
+//		System.out.println(user); // Nadje
 		// Moramo da mu nadjemo id, pa moramo da uvedemo menadzerService
 		Menadzer nadjen = menadzerService.findOneByUsername(user);
-		Long id = nadjen.getIdMenadzer(); // Nadje
-		// Sta onda?
-		Bioskop zaUBazu = bioskopService.napravi(dobijeni); 
+		Long idMenadzer = nadjen.getIdMenadzer(); // Nadje ga
+		
+//		System.out.println(idMenadzer); // Nadje
+//		System.out.println(dobijeni.getIdBioskop()); // null jer ga nije ni napravio, tako treba
+		
+		Bioskop zaUBazu = bioskopService.napravi(dobijeni, idMenadzer); // Pravi id
 		BioskopDTO nepotrebniDTO = new BioskopDTO(zaUBazu.getIdBioskop(), zaUBazu.getNaziv(), zaUBazu.getAdresa());
 		return new ResponseEntity<>(nepotrebniDTO, HttpStatus.OK);
 	}
