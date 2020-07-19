@@ -3,6 +3,7 @@ package ftnwebcinema.Cinema.service;
 import java.util.List;
 
 import ftnwebcinema.Cinema.entity.Bioskop;
+import ftnwebcinema.Cinema.entity.Sala;
 
 public interface BioskopService {
 	
@@ -17,4 +18,6 @@ public interface BioskopService {
 	Bioskop updateNaziv(Bioskop bioskop, String noviNaziv) throws Exception; 
 
     void delete(Long id);
+    
+    boolean dodajSalu(Sala sala, Long id);
 }

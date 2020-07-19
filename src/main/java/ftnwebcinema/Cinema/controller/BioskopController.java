@@ -37,12 +37,30 @@ public class BioskopController {
 	}
 	
 	@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<List<BioskopDTO>> getBioskopi() {
+    public ResponseEntity<List<BioskopDTO>> getBioskopiDTO() {
         List<Bioskop> nadjenaLista = this.bioskopService.findAll();
         List<BioskopDTO> novaLista = new ArrayList<>();
         for (Bioskop g : nadjenaLista) {
         	BioskopDTO tempBioskopDTO = new BioskopDTO(g.getIdBioskop(), g.getNaziv(), g.getAdresa());
         	novaLista.add(tempBioskopDTO);
+        }
+        return new ResponseEntity<>(novaLista, HttpStatus.OK);
+    }
+	
+	@GetMapping(value="/lista/{username}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<Bioskop>> getBioskopi(@PathVariable(name="username") String username) {
+		System.out.println(username); // Debug
+		// username dolazi iz localStorage-a kada se menadzer prijavi, da zna kojem menadzeru da izlista bioskope
+		// Iz menadzerService moram da dohvatim id menadzera jer ne moze da se poredi username sa g.getMenadzerUsername(),
+		// zato sto pocetni bioskopi tu imaju vrednost null, a nema smisla da se to menja u SQL-u		
+		Menadzer nadjenMenadzer = this.menadzerService.findOneByUsername(username);
+		Long nadjenID = nadjenMenadzer.getIdMenadzer();
+        List<Bioskop> nadjenaLista = this.bioskopService.findAll();
+        List<Bioskop> novaLista = new ArrayList<>();
+        for (Bioskop g : nadjenaLista) {
+        	if(g.getIdBioskop() == nadjenID){
+        		novaLista.add(g);
+        	}
         }
         return new ResponseEntity<>(novaLista, HttpStatus.OK);
     }

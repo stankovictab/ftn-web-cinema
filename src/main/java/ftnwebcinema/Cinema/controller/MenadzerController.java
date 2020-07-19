@@ -12,15 +12,27 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import ftnwebcinema.Cinema.entity.Bioskop;
 import ftnwebcinema.Cinema.entity.Menadzer;
+import ftnwebcinema.Cinema.entity.Sala;
 import ftnwebcinema.Cinema.entity.dto.MenadzerDTO;
+import ftnwebcinema.Cinema.service.BioskopService;
 import ftnwebcinema.Cinema.service.MenadzerService;
+import ftnwebcinema.Cinema.service.SalaService;
 
 @RestController
 @RequestMapping(value = "/menadzer") 
 public class MenadzerController {
+	
 	@Autowired 
 	private MenadzerService menadzerService;
+	
+	@Autowired 
+	private SalaService salaService;
+	
+	@Autowired 
+	private BioskopService bioskopService;
 	
 	@GetMapping(value="/{id}", produces=MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Menadzer> getMenadzer(@PathVariable(name="id") Long id){
@@ -81,5 +93,19 @@ public class MenadzerController {
 	public void brisanjeMenadzera(@PathVariable(name="id") Long id) throws Exception {
 		// id dobijamo iz id-a dugmeta koji je pritisnut u tabeli aktivacije menadzera kod admina
 		this.menadzerService.delete(id); // Bacice exception ako je menadzer vec u vezi sa nekim bioskopom, pa ne moze da se obrise
+	}
+	
+	@PostMapping(value = "/sale/dodavanje", consumes = MediaType.APPLICATION_JSON_VALUE)
+	public boolean dodavanjeSala(@RequestBody Sala dobijena) {
+		Bioskop bioskop = this.bioskopService.findByNaziv(dobijena.getNazivBioskopa());
+        Sala temp = new Sala(bioskop,
+        		dobijena.getOznakaSale(),
+        		dobijena.getKapacitet());
+        if (this.salaService.napraviSalu(temp)) {
+            return this.bioskopService.dodajSalu(temp, bioskop.getIdBioskop());
+        }
+
+        return false;
+		
 	}
 }

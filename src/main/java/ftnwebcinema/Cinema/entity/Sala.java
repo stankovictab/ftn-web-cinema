@@ -26,6 +26,9 @@ public class Sala implements Serializable{
 	// Svaki bioskop ima vise sala, svaka sala je samo za jedan bioskop
 	// Kolona je u ovoj tabeli
 	
+	// Koristi se u funkcionalnosti sa menadzerom
+	private String nazivBioskopa;
+	
 	@ManyToMany
 	@JoinTable(name = "salineProjekcije")
 	private Set<Projekcija> terminskaListaProjekcija = new HashSet<>();
@@ -65,5 +68,24 @@ public class Sala implements Serializable{
 	public void setBioskop(Bioskop bioskop) {
 		this.bioskop = bioskop;
 	}
+
+	public String getNazivBioskopa() {
+		return nazivBioskopa;
+	}
+
+	public void setNazivBioskopa(String nazivBioskopa) {
+		this.nazivBioskopa = nazivBioskopa;
+	}
+
+	public Sala() {}
+	
+	public Sala(Bioskop bioskop, String oznakaSale, int kapacitet) {
+		super();
+		this.kapacitet = kapacitet;
+		this.oznakaSale = oznakaSale;
+		this.bioskop = bioskop;
+	}
+	
+	
 	
 }

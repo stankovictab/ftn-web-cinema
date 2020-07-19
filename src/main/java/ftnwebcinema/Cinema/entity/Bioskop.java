@@ -31,6 +31,7 @@ public class Bioskop implements Serializable{
 	@Column
 	private String email;
 	
+	// Treba da se promeni ako se vec listaju vise bioskopa za jednog menadzera
 	@OneToOne
 	private Menadzer menadzerBioskopa;
 	// Jedan menadzer za jedan bioskop, jedina OneToOne veza
@@ -45,6 +46,8 @@ public class Bioskop implements Serializable{
 	// Svaki bioskop ima vise sala, svaka sala je samo za jedan bioskop
 	// Kolona je u tabeli Sala
 	
+	// Mozda OneToMany, da jedan bioskop ima vise projekcija ali da te projekcije idu samo za taj bioskop, 
+	// ne mogu vise bioskopa da imaju iste projekcije
 	@ManyToMany
 	@JoinTable(name = "bioskopoveProjekcije")
 	private Set<Projekcija> rasporedProjekcija = new HashSet<>();
@@ -119,4 +122,15 @@ public class Bioskop implements Serializable{
 		this.menadzerUsername = menadzerUsername; // Mislim da treba i ovo
 	}
 
+	public boolean dodajSalu(Sala sala) {
+		if(this.listaSala.add(sala)) {
+			return true;
+		}
+		return false;
+	}
+	
+	public Set<Sala> getSale(){
+		return this.listaSala;
+	}
+	
 }

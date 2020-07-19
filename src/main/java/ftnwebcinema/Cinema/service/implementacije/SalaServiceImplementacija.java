@@ -24,4 +24,36 @@ public class SalaServiceImplementacija implements SalaService{
 			}
 		}
 	}
+	
+	@Override
+	public boolean napraviSalu(Sala sala){
+		if (this.salaRepo.save(sala) != null) {
+			return true;
+		}
+		
+		return false;
+	}
+	
+	@Override
+    public List<Sala> findAll() {
+        List<Sala> temp = this.salaRepo.findAll();
+
+        return temp;
+    }
+
+    @Override
+    public void delete(Sala sala) {
+        this.salaRepo.deleteById(sala.getIdSala());
+    }
+
+    @Override
+    public Sala findByOznaka(String oznaka) {
+        return this.salaRepo.findByOznakaSale(oznaka);
+    }
+
+    @Override
+    public void deleteById(Long id) {
+        this.salaRepo.deleteById(id);
+    }
+	
 }

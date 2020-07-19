@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import ftnwebcinema.Cinema.entity.Bioskop;
 import ftnwebcinema.Cinema.repository.BioskopRepo;
 import ftnwebcinema.Cinema.service.BioskopService;
+import ftnwebcinema.Cinema.entity.Sala;
 
 @Service
 public class BioskopServiceImplementacija implements BioskopService{
@@ -67,5 +68,17 @@ public class BioskopServiceImplementacija implements BioskopService{
 	public void delete(Long id) {
 		this.bioskopRepo.deleteById(id); // Samo brise po id, predefinisana funkcija
 	}
+	
+	@Override
+    public boolean dodajSalu(Sala sala, Long id) {
+        Bioskop bioskop = this.bioskopRepo.getOne(id);
+        if (bioskop.dodajSalu(sala)) {
+            if (this.bioskopRepo.save(bioskop) != null) {
+                return true;
+            }
+        }
+        return false;
 
+    }
+	
 }
