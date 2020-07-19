@@ -20,8 +20,14 @@ public class Projekcija implements Serializable{
 	@Column
 	private String datumProjekcije;
 	
+	// Koristi se u izmeni projekcije
+	private String stariDatumProjekcije;
+	
 	@Column
 	private double cenaProjekcije;
+	
+	// Sluzi za kreiranje projekcije
+	private Long tempIDFilma;
 	
 	@ManyToOne 
 	private Film film;
@@ -51,5 +57,79 @@ public class Projekcija implements Serializable{
 	// Ovo je lista bioskopa u kojima se projekcija prikazuje
 	// Vezano sa Bioskop -> rasporedProjekcija
 	// Ime tabele je BIOSKOPOVE_PROJEKCIJE
+
+	public Long getIdProjekcija() {
+		return idProjekcija;
+	}
+
+	public void setIdProjekcija(Long idProjekcija) {
+		this.idProjekcija = idProjekcija;
+	}
+
+	public String getDatumProjekcije() {
+		return datumProjekcije;
+	}
+
+	public void setDatumProjekcije(String datumProjekcije) {
+		this.datumProjekcije = datumProjekcije;
+	}
+
+	public double getCenaProjekcije() {
+		return cenaProjekcije;
+	}
+
+	public void setCenaProjekcije(double cenaProjekcije) {
+		this.cenaProjekcije = cenaProjekcije;
+	}
+
+	public Film getFilm() {
+		return film;
+	}
+
+	public void setFilm(Film film) {
+		this.film = film;
+	}
+
+	public Gledalac getRezervator() {
+		return rezervator;
+	}
+
+	public void setRezervator(Gledalac rezervator) {
+		this.rezervator = rezervator;
+	}
+
+	public Set<Sala> getListaSala() {
+		return listaSala;
+	}
+
+	public void setListaSala(Set<Sala> listaSala) {
+		this.listaSala = listaSala;
+	}
+
+	public Set<Bioskop> getListaBioskopa() {
+		return listaBioskopa;
+	}
+
+	public void setListaBioskopa(Set<Bioskop> listaBioskopa) {
+		this.listaBioskopa = listaBioskopa;
+	}
+
+	public Long getTempIDFilma() {		
+		return tempIDFilma;
+	}
+
+	public void setTempIDFilma(Long tempIDFilma) {
+		this.tempIDFilma = tempIDFilma;
+	}
+	
+	public Projekcija() {}
+
+	public String getStariDatumProjekcije() {
+		return stariDatumProjekcije;
+	}
+
+	public void setStariDatumProjekcije(String stariDatumProjekcije) {
+		this.stariDatumProjekcije = stariDatumProjekcije;
+	}
 	
 }

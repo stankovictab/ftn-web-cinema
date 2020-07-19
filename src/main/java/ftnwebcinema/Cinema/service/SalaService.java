@@ -17,4 +17,6 @@ public interface SalaService {
 	
 	public void deleteById(Long id);
 	
+	public void updateOznake(Sala sala, String novaOznaka);
+	
 }

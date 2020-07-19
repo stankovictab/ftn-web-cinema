@@ -132,5 +132,11 @@ public class Bioskop implements Serializable{
 	public Set<Sala> getSale(){
 		return this.listaSala;
 	}
+
+	public boolean dodajProjekciju(Projekcija nova) {
+		this.rasporedProjekcija.add(nova);
+		System.out.println("USPESNO DODATA PROJEKCIJA");
+		return true;
+	}
 	
 }

@@ -3,6 +3,7 @@ package ftnwebcinema.Cinema.service;
 import java.util.List;
 
 import ftnwebcinema.Cinema.entity.Bioskop;
+import ftnwebcinema.Cinema.entity.Projekcija;
 import ftnwebcinema.Cinema.entity.Sala;
 
 public interface BioskopService {
@@ -20,4 +21,6 @@ public interface BioskopService {
     void delete(Long id);
     
     boolean dodajSalu(Sala sala, Long id);
+
+	boolean dodajProjekciju(Projekcija nova, Long idBioskop);
 }

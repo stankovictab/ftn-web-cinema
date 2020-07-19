@@ -6,23 +6,21 @@ $(document).on("submit", "form", function (event) {
 
 	event.preventDefault();
 	var salaJSON = JSON.stringify({
-		"kapacitet": $("#kapacitet").val(),
-		"oznakaSale": $("#oznakaSale").val(),
-		"nazivBioskopa": $("#nazivBioskopa").val()
+		"oznakaSale": $("#oznakaSale").val()
 	});
 
 	$.ajax({
 		type: "POST",
-		url: "http://localhost:8080/menadzer/sale/dodavanje", // Gadja specificni url za metodu kontrolera
+		url: "http://localhost:8080/menadzer/sale/brisanje", // Gadja specificni url za metodu kontrolera
 		// dataType: "json", // Povratna vrednost, ne moze sa ovim da radi ako je void metoda kontrolera
 		contentType: "application/json", // Podaci koje saljemo
 		data: salaJSON, // Saljemo objekat koji smo napravili, on je taj data JSON
 		success: function () {
-			alert("Sala '" + $("#oznakaSale").val() + "' je napravljena!");
+			alert("Sala '" + $("#oznakaSale").val() + "' je obrisana!");
 			window.location.href = "index-menadzer.html"; // Redirect
 		},
 		error: function (data) {
-			alert("Greska u kreiranju sale.");
+			alert("Greska u brisanju sale.\nProveri unos oznake sale.");
 			console.log("ERROR: ", data);
 		}
 	});

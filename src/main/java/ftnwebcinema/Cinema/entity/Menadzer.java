@@ -25,5 +25,9 @@ public class Menadzer extends Korisnik {
 	public Long getIdMenadzer() {
 		return idMenadzer;
 	}
+	
+	public Bioskop getMenadzerovBioskop() {
+		return this.menadzerovBioskop;
+	}
 
 }

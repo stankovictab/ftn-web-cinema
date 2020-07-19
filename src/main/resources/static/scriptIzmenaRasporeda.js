@@ -4,25 +4,26 @@ function fokusiraj() {
 
 $(document).on("submit", "form", function (event) {
 
+	var user = localStorage.getItem("user");
+
 	event.preventDefault();
-	var salaJSON = JSON.stringify({
-		"kapacitet": $("#kapacitet").val(),
-		"oznakaSale": $("#oznakaSale").val(),
-		"nazivBioskopa": $("#nazivBioskopa").val()
+	var projekcijaJSON = JSON.stringify({
+		"stariDatumProjekcije": $("#stariDatumProjekcije").val(),
+		"datumProjekcije": $("#datumProjekcije").val()
 	});
 
 	$.ajax({
 		type: "POST",
-		url: "http://localhost:8080/menadzer/sale/dodavanje", // Gadja specificni url za metodu kontrolera
+		url: "http://localhost:8080/projekcija/izmena/" + user, // Gadja specificni url za metodu kontrolera
 		// dataType: "json", // Povratna vrednost, ne moze sa ovim da radi ako je void metoda kontrolera
 		contentType: "application/json", // Podaci koje saljemo
-		data: salaJSON, // Saljemo objekat koji smo napravili, on je taj data JSON
+		data: projekcijaJSON, // Saljemo objekat koji smo napravili, on je taj data JSON
 		success: function () {
-			alert("Sala '" + $("#oznakaSale").val() + "' je napravljena!");
+			alert("Projekcija je izmenjena!");
 			window.location.href = "index-menadzer.html"; // Redirect
 		},
 		error: function (data) {
-			alert("Greska u kreiranju sale.");
+			alert("Greska u izmeni projekcije.");
 			console.log("ERROR: ", data);
 		}
 	});

@@ -123,8 +123,8 @@ public class BioskopController {
 	@PostMapping(value="/brisanje", consumes = MediaType.APPLICATION_JSON_VALUE)
 	public void obrisiBioskop(@RequestBody Bioskop dobijeni) throws Exception {
 		// dobijeni ima samo jedno polje
-		System.out.println(dobijeni.getNaziv());
 		String naziv = dobijeni.getNaziv();
+		System.out.println(naziv);
 		
 		Bioskop nadjen = this.bioskopService.findByNaziv(naziv);
 		

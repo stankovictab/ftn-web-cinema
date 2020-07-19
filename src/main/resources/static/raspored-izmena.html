@@ -16,7 +16,7 @@
 	<!-- Font Awesome -->
 	<script src="https://kit.fontawesome.com/705b70177f.js" crossorigin="anonymous"></script>
 
-	<title>Brisanje Sala</title>
+	<title>Izmena Rasporeda</title>
 </head>
 
 <body onload="fokusiraj()">
@@ -49,7 +49,7 @@
 		<div class="col-md-4">
 		</div>
 		<div class="col-md-3 mt-5">
-			<h2>Brisanje Sala</h2>
+			<h2>Izmena Rasporeda</h2>
 		</div>
 		<div class="col-md-2 mt-5">
 			<a id="home-dugme" class="btn btn-outline-primary" onclick="history.back()">
@@ -63,14 +63,16 @@
 	<div class="row">
 		<div class="col-md-4"></div> <!-- Separator -->
 
-		<form name="forma-brisanje" class="forma col-md-4 mt-3 border border-dark rounded-lg">
-			<label for="oznakaSale">Oznaka Sale :</label>
-			<input id="oznakaSale" type="text" name="oznakaSale" class="form-control" required>
+		<form name="forma-izmena-rasporeda" class="forma col-md-4 mt-3 border border-dark rounded-lg">
+			<label for="stariDatumProjekcije">Stari Datum :</label>
+			<input id="stariDatumProjekcije" type="date" name="stariDatumProjekcije" class="form-control" required>
+			<label for="datumProjekcije">Novi Datum :</label>
+			<input id="datumProjekcije" type="date" name="datumProjekcije" class="form-control" required>
 
 			<div style="text-align: center; margin-top: 10px">
 				<button type="submit" id="posalji-dugme" class="btn btn-primary mt-3">
-					<i class="fas fa-trash-alt mr-2"></i>
-					Izbriši
+					<i class="fas fa-paper-plane mr-2"></i>
+					Pošalji
 				</button>
 			</div>
 
@@ -84,7 +86,7 @@
 	<!-- jQuery ja dodao bolji, ne slim build jer on nema AJAX -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<!-- Moj JS, mora da bude posle jQuery-a -->
-	<script type="text/javascript" src="scriptSaleBrisanje.js"></script>
+	<script type="text/javascript" src="scriptIzmenaRasporeda.js"></script>
 	<!-- Bootstrap-ov JS -->
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
 		integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"

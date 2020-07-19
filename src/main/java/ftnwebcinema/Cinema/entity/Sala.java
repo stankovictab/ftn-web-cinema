@@ -21,12 +21,15 @@ public class Sala implements Serializable{
 	@Column
 	private String oznakaSale;
 	
+	// Koristi se u editovanju sale
+	private String staraOznakaSale;
+	
 	@ManyToOne
 	private Bioskop bioskop;
 	// Svaki bioskop ima vise sala, svaka sala je samo za jedan bioskop
 	// Kolona je u ovoj tabeli
 	
-	// Koristi se u funkcionalnosti sa menadzerom
+	// Koristi se u dodavanju sale
 	private String nazivBioskopa;
 	
 	@ManyToMany
@@ -84,6 +87,14 @@ public class Sala implements Serializable{
 		this.kapacitet = kapacitet;
 		this.oznakaSale = oznakaSale;
 		this.bioskop = bioskop;
+	}
+
+	public String getStaraOznakaSale() {
+		return staraOznakaSale;
+	}
+
+	public void setStaraOznakaSale(String staraOznakaSale) {
+		this.staraOznakaSale = staraOznakaSale;
 	}
 	
 	

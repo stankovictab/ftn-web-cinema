@@ -30,14 +30,12 @@ public class SalaServiceImplementacija implements SalaService{
 		if (this.salaRepo.save(sala) != null) {
 			return true;
 		}
-		
 		return false;
 	}
 	
 	@Override
     public List<Sala> findAll() {
         List<Sala> temp = this.salaRepo.findAll();
-
         return temp;
     }
 
@@ -55,5 +53,11 @@ public class SalaServiceImplementacija implements SalaService{
     public void deleteById(Long id) {
         this.salaRepo.deleteById(id);
     }
-	
+
+	@Override
+	public void updateOznake(Sala sala, String novaOznaka) {
+		Sala s = this.salaRepo.getOne(sala.getIdSala());
+		s.setOznakaSale(novaOznaka);
+		this.salaRepo.save(s);
+	}
 }

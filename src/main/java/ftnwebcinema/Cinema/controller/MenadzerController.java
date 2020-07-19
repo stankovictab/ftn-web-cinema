@@ -104,8 +104,26 @@ public class MenadzerController {
         if (this.salaService.napraviSalu(temp)) {
             return this.bioskopService.dodajSalu(temp, bioskop.getIdBioskop());
         }
-
         return false;
+	}
+	
+	@PostMapping(value = "/sale/izmena", consumes = MediaType.APPLICATION_JSON_VALUE)
+	public void izmenaSala(@RequestBody Sala dobijena) {
+		// Treba da nadje salu koja sadrzi trenutno staro ime iz servisa promeni ga, i .save()-uje
+		System.out.println(dobijena.getStaraOznakaSale());
+		System.out.println(dobijena.getOznakaSale());
 		
+		Sala s = this.salaService.findByOznaka(dobijena.getStaraOznakaSale());		
+		this.salaService.updateOznake(s, dobijena.getOznakaSale()); // Posto save() mora iz repo-a
+	}
+	
+	@PostMapping(value = "/sale/brisanje", consumes = MediaType.APPLICATION_JSON_VALUE)
+	public void brisanjeSala(@RequestBody Sala dobijena) {
+		// Treba da nadje salu sa tom oznakom i da proba da je obrise, ali sta ako ne moze da je obrise zbog bioskopa?
+		String oznaka = dobijena.getOznakaSale();
+		System.out.println(oznaka);
+		
+		Sala s = this.salaService.findByOznaka(oznaka);
+		this.salaService.delete(s);
 	}
 }

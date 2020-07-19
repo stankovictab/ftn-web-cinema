@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import ftnwebcinema.Cinema.entity.Bioskop;
+import ftnwebcinema.Cinema.entity.Projekcija;
 import ftnwebcinema.Cinema.repository.BioskopRepo;
 import ftnwebcinema.Cinema.service.BioskopService;
 import ftnwebcinema.Cinema.entity.Sala;
@@ -80,5 +81,15 @@ public class BioskopServiceImplementacija implements BioskopService{
         return false;
 
     }
+
+	@Override
+	public boolean dodajProjekciju(Projekcija nova, Long idBioskop) {
+		Bioskop bioskop = this.bioskopRepo.getOne(idBioskop);
+		if(bioskop.dodajProjekciju(nova)) {
+			this.bioskopRepo.save(bioskop);
+			return true;
+		}
+		return false;
+	}
 	
 }
