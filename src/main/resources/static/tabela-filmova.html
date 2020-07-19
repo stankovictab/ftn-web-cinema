@@ -60,26 +60,73 @@
 	</div>
 
 	<div class="row">
-		<div class="col-md-3"></div> <!-- Separator -->
+		<div class="col-md-3"></div>
+		<div class="col-md-6">
+			<form id="pretraga">
+				<!-- Isti name znaci da ce se omoguciti samo jedan -->
+				<input type="radio" id="pretraga-naziv" name="pretraga" value="naziv">
+				<label for="pretraga-naziv">Po Nazivu</label>
+				<br>
+				<input type="radio" id="pretraga-zanr" name="pretraga" value="zanr">
+				<label for="pretraga-zanr">Po Zanru</label>
+				<br>
+				<input type="radio" id="pretraga-opis" name="pretraga" value="opis">
+				<label for="pretraga-opis">Po Opisu</label>
+				<br>
+				<input type="radio" id="pretraga-ocena" name="pretraga" value="ocena">
+				<label for="pretraga-ocena">Po Oceni</label>
+				<br>
+				<input type="radio" id="pretraga-vremeprojekcije" name="pretraga" value="vreme">
+				<label for="pretraga-vremeprojekcije">Po Vremenu Projekcije</label>
+				<br>
+				<input type="radio" id="pretraga-cenakarte" name="pretraga" value="cena">
+				<label for="pretraga-cenakarte">Po Ceni Karte</label>
+				<br><br>
+				<label for="keyword">Keyword</label>
+				<br>
+				<input type="text" id="keyword">
+				<br><br>
+				<input type="button" value="Pretrazi" id="pretrazi">
+				<br><br>
+			</form>
+		</div>
+		<div class="col-md-3"></div>
+	</div>
 
+
+	<div class="row" id="divRezultatPretrage" hidden>
+		<div class="col-md-3"></div>
+		<div class="col-md-6">
+			<table id="tabela-filmova-2">
+				<thead>
+					<tr>
+						<td>ID</td>
+						<td>Naziv</td>
+						<td>Zanr</td>
+					</tr>
+				</thead>
+				<tr>
+				</tr>
+			</table>
+		</div>
+	</div>
+
+	<div class="row" id="divPocetnaTabela">
+		<div class="col-md-3"></div>
 		<div class="col-md-6">
 			<table id="tabela-filmova">
-				<!-- Dodaj id za AJAX, on ce puniti tabelu i dodati dugme, a i njemu omoguciti otvaranje profila -->
 				<thead>
 					<tr>
 						<td>ID</td>
 						<td>Naziv</td>
 						<td>Adresa</td>
 						<td>Vidi Jos</td>
-						<!-- <td>Brisanje</td> -->
 					</tr>
 				</thead>
 				<tr>
 				</tr>
 			</table>
-
 		</div>
-
 	</div>
 
 	<!-- Profil -->
@@ -130,6 +177,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<!-- Moj JS, mora da bude posle jQuery-a -->
 	<script type="text/javascript" src="scriptTabele.js"></script>
+	<script type="text/javascript" src="scriptPretraga.js"></script>
 	<!-- Bootstrap-ov JS -->
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
 		integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"

@@ -17,6 +17,10 @@ public class Film implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idFilm;
 	
+	// Sluze za pretragu
+	private String keyword;
+	private String pretraga;
+	
 	@Column
 	private String naziv;
 	
@@ -107,6 +111,31 @@ public class Film implements Serializable{
 		this.trajanje = trajanje;
 		this.srednjaOcena = srednjaOcena;
 	}
+
+	public String getKeyword() {
+		return keyword;
+	}
+
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
+	}
+
+	public String getPretraga() {
+		return pretraga;
+	}
+
+	public void setPretraga(String pretraga) {
+		this.pretraga = pretraga;
+	}
+
+	public Set<Projekcija> getListaProjekcija() {
+		return listaProjekcija;
+	}
+
+	public void setListaProjekcija(Set<Projekcija> listaProjekcija) {
+		this.listaProjekcija = listaProjekcija;
+	}
+	
 	
 	
 }

@@ -5,7 +5,7 @@ $("#tabela-gledalaca").ready(function () {
 		url: "http://localhost:8080/gledalac", // URL Kontrolera
 		dataType: "json", // Povratna vrednost
 		success: function (data) { // data je JSON iz kontrolera (ResponseEntity), odnosno lista DTO-ova, pa kroz nju moze da se iterira
-			console.log("SUCCESS : ", data); // Ispisuje celu listu u konzolu
+			console.log("TABELA SUCCESS : ", data); // Ispisuje celu listu u konzolu
 			for (i = 0; i < data.length; i++) {
 				// Konkateniraju se informacije u string koji ce se apendovati na tabelu (vidi dole)
 				var row = "<tr>";
@@ -25,7 +25,7 @@ $("#tabela-gledalaca").ready(function () {
 			}
 		},
 		error: function (data) {
-			console.log("ERROR : ", data);
+			console.log("TABELA ERROR : ", data);
 		}
 	});
 
@@ -45,7 +45,7 @@ $("#tabela-gledalaca").on('click', '.dugmeProfil', function () { // Na klik dugm
 		url: "http://localhost:8080/gledalac/" + this.id,  // this.id je button-ov id, a kao button id je postavljen id zaposlenog gore, pa ne moze da se gore stavi + "zaProfil" da se razlikuje id od drugog button-a (moraju ipak imati isti id, sto nije dobra praksa, ali mora jer je ona ovako napravila)
 		dataType: "json",
 		success: function (data) {
-			console.log("SUCCESS : ", data);
+			console.log("TABELA SUCCESS : ", data);
 			// Menja podatke u profilu sa podacima iz JSON fajla
 			$('#imeProfil').append(data['ime']);
 			$('#prezimeProfil').append(data['prezime']);
@@ -59,7 +59,7 @@ $("#tabela-gledalaca").on('click', '.dugmeProfil', function () { // Na klik dugm
 			$("#profil").removeAttr("hidden");
 		},
 		error: function (data) {
-			console.log("ERROR : ", data);
+			console.log("TABELA ERROR : ", data);
 		}
 	});
 });
@@ -75,7 +75,7 @@ $("#tabela-menadzera").ready(function () {
 		url: "http://localhost:8080/menadzer", // URL Kontrolera
 		dataType: "json", // Povratna vrednost
 		success: function (data) { // data je JSON iz kontrolera (ResponseEntity), odnosno lista DTO-ova, pa kroz nju moze da se iterira
-			console.log("SUCCESS : ", data); // Ispisuje celu listu u konzolu
+			console.log("TABELA SUCCESS : ", data); // Ispisuje celu listu u konzolu
 			for (i = 0; i < data.length; i++) {
 				// Konkateniraju se informacije u string koji ce se apendovati na tabelu (vidi dole)
 				var row = "<tr>";
@@ -95,7 +95,7 @@ $("#tabela-menadzera").ready(function () {
 			}
 		},
 		error: function (data) {
-			console.log("ERROR : ", data);
+			console.log("TABELA ERROR : ", data);
 		}
 	});
 
@@ -115,7 +115,7 @@ $("#tabela-menadzera").on('click', '.dugmeProfil', function () { // Na klik dugm
 		url: "http://localhost:8080/menadzer/" + this.id,  // this.id je button-ov id, a kao button id je postavljen id zaposlenog gore, pa ne moze da se gore stavi + "zaProfil" da se razlikuje id od drugog button-a (moraju ipak imati isti id, sto nije dobra praksa, ali mora jer je ona ovako napravila)
 		dataType: "json",
 		success: function (data) {
-			console.log("SUCCESS : ", data);
+			console.log("TABELA SUCCESS : ", data);
 			// Menja podatke u profilu sa podacima iz JSON fajla
 			$('#imeProfil').append(data['ime']);
 			$('#prezimeProfil').append(data['prezime']);
@@ -129,7 +129,7 @@ $("#tabela-menadzera").on('click', '.dugmeProfil', function () { // Na klik dugm
 			$("#profil").removeAttr("hidden");
 		},
 		error: function (data) {
-			console.log("ERROR : ", data);
+			console.log("TABELA ERROR : ", data);
 		}
 	});
 });
@@ -145,7 +145,7 @@ $("#tabela-administratora").ready(function () {
 		url: "http://localhost:8080/administrator", // URL Kontrolera
 		dataType: "json", // Povratna vrednost
 		success: function (data) { // data je JSON iz kontrolera (ResponseEntity), odnosno lista DTO-ova, pa kroz nju moze da se iterira
-			console.log("SUCCESS : ", data); // Ispisuje celu listu u konzolu
+			console.log("TABELA SUCCESS : ", data); // Ispisuje celu listu u konzolu
 			for (i = 0; i < data.length; i++) {
 				// Konkateniraju se informacije u string koji ce se apendovati na tabelu (vidi dole)
 				var row = "<tr>";
@@ -165,7 +165,7 @@ $("#tabela-administratora").ready(function () {
 			}
 		},
 		error: function (data) {
-			console.log("ERROR : ", data);
+			console.log("TABELA ERROR : ", data);
 		}
 	});
 
@@ -185,7 +185,7 @@ $("#tabela-administratora").on('click', '.dugmeProfil', function () { // Na klik
 		url: "http://localhost:8080/administrator/" + this.id,  // this.id je button-ov id, a kao button id je postavljen id zaposlenog gore, pa ne moze da se gore stavi + "zaProfil" da se razlikuje id od drugog button-a (moraju ipak imati isti id, sto nije dobra praksa, ali mora jer je ona ovako napravila)
 		dataType: "json",
 		success: function (data) {
-			console.log("SUCCESS : ", data);
+			console.log("TABELA SUCCESS : ", data);
 			// Menja podatke u profilu sa podacima iz JSON fajla
 			$('#imeProfil').append(data['ime']);
 			$('#prezimeProfil').append(data['prezime']);
@@ -199,7 +199,7 @@ $("#tabela-administratora").on('click', '.dugmeProfil', function () { // Na klik
 			$("#profil").removeAttr("hidden");
 		},
 		error: function (data) {
-			console.log("ERROR : ", data);
+			console.log("TABELA ERROR : ", data);
 		}
 	});
 });
@@ -215,7 +215,7 @@ $("#tabela-bioskopa").ready(function () {
 		url: "http://localhost:8080/bioskop", // URL Kontrolera
 		dataType: "json", // Povratna vrednost
 		success: function (data) { // data je JSON iz kontrolera (ResponseEntity), odnosno lista DTO-ova, pa kroz nju moze da se iterira
-			console.log("SUCCESS : ", data); // Ispisuje celu listu u konzolu
+			console.log("TABELA SUCCESS : ", data); // Ispisuje celu listu u konzolu
 			for (i = 0; i < data.length; i++) {
 				// Konkateniraju se informacije u string koji ce se apendovati na tabelu (vidi dole)
 				var row = "<tr>";
@@ -235,7 +235,7 @@ $("#tabela-bioskopa").ready(function () {
 			}
 		},
 		error: function (data) {
-			console.log("ERROR : ", data);
+			console.log("TABELA ERROR : ", data);
 		}
 	});
 
@@ -255,7 +255,7 @@ $("#tabela-bioskopa").on('click', '.dugmeProfil', function () { // Na klik dugme
 		url: "http://localhost:8080/bioskop/" + this.id,  // this.id je button-ov id, a kao button id je postavljen id zaposlenog gore, pa ne moze da se gore stavi + "zaProfil" da se razlikuje id od drugog button-a (moraju ipak imati isti id, sto nije dobra praksa, ali mora jer je ona ovako napravila)
 		dataType: "json",
 		success: function (data) {
-			console.log("SUCCESS : ", data);
+			console.log("TABELA SUCCESS : ", data);
 			// Menja podatke u profilu sa podacima iz JSON fajla
 			$('#nazivProfil').append(data['naziv']);
 			$('#adresaProfil').append(data['adresa']);
@@ -264,7 +264,7 @@ $("#tabela-bioskopa").on('click', '.dugmeProfil', function () { // Na klik dugme
 			$("#profil").removeAttr("hidden");
 		},
 		error: function (data) {
-			console.log("ERROR : ", data);
+			console.log("TABELA ERROR : ", data);
 		}
 	});
 });
@@ -280,7 +280,7 @@ $("#tabela-filmova").ready(function () {
 		url: "http://localhost:8080/film", // URL Kontrolera
 		dataType: "json", // Povratna vrednost
 		success: function (data) { // data je JSON iz kontrolera (ResponseEntity), odnosno lista DTO-ova, pa kroz nju moze da se iterira
-			console.log("SUCCESS : ", data); // Ispisuje celu listu u konzolu
+			console.log("TABELA SUCCESS : ", data); // Ispisuje celu listu u konzolu
 			for (i = 0; i < data.length; i++) {
 				// Konkateniraju se informacije u string koji ce se apendovati na tabelu (vidi dole)
 				var row = "<tr>";
@@ -300,7 +300,7 @@ $("#tabela-filmova").ready(function () {
 			}
 		},
 		error: function (data) {
-			console.log("ERROR : ", data);
+			console.log("TABELA ERROR : ", data);
 		}
 	});
 
@@ -320,7 +320,7 @@ $("#tabela-filmova").on('click', '.dugmeProfil', function () { // Na klik dugmet
 		url: "http://localhost:8080/film/" + this.id,  // this.id je button-ov id, a kao button id je postavljen id zaposlenog gore, pa ne moze da se gore stavi + "zaProfil" da se razlikuje id od drugog button-a (moraju ipak imati isti id, sto nije dobra praksa, ali mora jer je ona ovako napravila)
 		dataType: "json",
 		success: function (data) {
-			console.log("SUCCESS : ", data);
+			console.log("TABELA SUCCESS : ", data);
 			// Menja podatke u profilu sa podacima iz JSON fajla
 			$('#nazivProfil').append(data['naziv']);
 			$('#opisProfil').append(data['opis']);
@@ -330,7 +330,7 @@ $("#tabela-filmova").on('click', '.dugmeProfil', function () { // Na klik dugmet
 			$("#profil").removeAttr("hidden");
 		},
 		error: function (data) {
-			console.log("ERROR : ", data);
+			console.log("TABELA ERROR : ", data);
 		}
 	});
 });

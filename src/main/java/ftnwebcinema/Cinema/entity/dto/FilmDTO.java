@@ -24,6 +24,7 @@ public class FilmDTO {
 		this.zanr = zanr;
 	}
 	public FilmDTO() {}
+	
 	public FilmDTO(Long id, String naziv, String zanr) {
 		this.idFilm = id;
 		this.naziv = naziv;
